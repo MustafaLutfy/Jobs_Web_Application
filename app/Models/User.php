@@ -17,9 +17,38 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function job()
+    {
+    return $this->belongsTo(Job::class);
+    }
+
+    public function education(): HasMany
+    {
+        return $this->hasMany(Education::class);
+    }
+
+    public function applies(): HasMany
+    {
+        return $this->hasMany(Apply::class);
+    }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class);
+    }
+    
+
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'phone',
+        'country',
+        'city',
+        'exp',
+        'birth_date',
+        'job_searching',
+        'profile_photo_path',
         'password',
     ];
 

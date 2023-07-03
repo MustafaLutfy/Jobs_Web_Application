@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('companies', function (Blueprint $table) {
+            $table->id();
+            $table->string('cp_name');
+            $table->string('cp__email')->unique();
+            $table->string('cp__phone')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('country');
+            $table->string('city');
+            $table->string('Address');
+            $table->string('zip_code');
+            $table->string('description');
+            $table->string('website');
+            $table->enum('employees_number', ['1-5', '5-20', '20-100', '100-1000', '1000+'])->nullable();
+            $table->date('establishing_date')->nullable();
+            $table->rememberToken();
+            $table->string('cp_logo_path', 2048)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+    }
+};
