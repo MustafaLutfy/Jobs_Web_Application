@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Company;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -13,14 +14,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class RegisteredCompanyController extends Controller
 {
     /**
      * Display the registration view.
      */
     public function create(): View
     {
-        return view('auth.user-register');
+        return view('auth.company-register');
     }
 
     /**
@@ -30,45 +31,50 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        
         $request->validate([
-            'first_name' => ['required', 'string', 'max:30'],
-            'last_name' => ['required', 'string', 'max:30'],
-            'phone' => ['required','numeric'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cp_name' => ['required', 'string', 'max:30'],
+            'cp_phone' => ['required','numeric'],
+            'cp_email' => ['required', 'string', 'email', 'max:255', 'unique:companies'],
             'country' => ['required', 'string', 'max:30'], 
             'city' => ['required', 'string', 'max:30'],
-            'exp' => ['nullable', 'string', 'max:30'],
-            'birth_date' => ['required', 'date'],
+            'address' => ['required', 'string', 'max:60'],
+            'zip_code' => ['required','numeric'],
+            'description' => ['nullable', 'string'],
+            'website' => ['nullable', 'string','url'],
+            'establishing_date' => ['required', 'date'],
             'current_pos' => ['nullable', 'string'],
             'job_searching' => ['nullable', 'boolean'],
-            'profile_photo_path' => ['nullable', 'string'],
-            'user_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'cp_logo_path' => ['nullable', 'string'],
+            'cp_image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $imageName = time().'.'.$request->image->extension();  
         $request->image->move(public_path('users_images'), $imageName);
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
+
+        $company = Company::create([
+            'cp_name' => $request->cp_name,
+            'cp_email' => $request->cp_email,
+            'cp_phone' => $request->cp_phone,
             'country' => $request->country,
             'city' => $request->city,
-            'exp' => $request->exp,
-            'profile_photo_path' => $imageName,
-            'birth_date' => $request['birth_date'],
+            'Address' => $request->address,
+            'zip_code' => $request->zip_code,
+            'cp_logo_path' => $imageName,
+            'establishing_date' => $request->establishing_date,
             'password' => Hash::make($request['password']),
+            'description' => $request->description,
+            'website' => $request->website,
             
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+         ]);
 
-        event(new Registered($user));
+        event(new Registered($company));
 
-        Auth::login($user);
+        Auth::login($company);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('home');
+       
     }
 }

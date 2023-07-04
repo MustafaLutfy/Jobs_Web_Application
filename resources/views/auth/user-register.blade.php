@@ -1,7 +1,10 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-        @csrf
+    <h1 style="font-size: 60px">this is user reg</h1>
 
+    <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
+        @csrf
+ 
+        
         <!-- Name -->
         <div>
             <x-input-label for="first_name" :value="__('first_name')" />
