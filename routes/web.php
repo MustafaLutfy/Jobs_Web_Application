@@ -26,6 +26,17 @@ Route::prefix('company')->group(function () {
 
 /*------------End Company Routes---------------*/
 
+Route::get('/company/dashboard',function(){
+    if(Auth::guard('company')->check()){
+
+        return view('company.dashboard');
+    }
+    else{
+        return view("auth.company-login");
+        }
+
+
+})->name('company.dashboard');
 
 
 

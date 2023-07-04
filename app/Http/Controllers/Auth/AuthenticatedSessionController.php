@@ -15,15 +15,19 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function userCreate(): View
     {
         return view('auth.login');
+    }
+    public function companyCreate(): View
+    {
+        return view('auth.company-login');
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function userStore(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
@@ -31,6 +35,8 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+  
 
     /**
      * Destroy an authenticated session.
@@ -45,4 +51,5 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+   
 }

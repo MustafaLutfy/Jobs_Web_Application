@@ -19,6 +19,7 @@ class Company extends Authenticatable
     }
 
     protected $guard = 'company';
+
     protected $fillable = [
         'cp_name',
         'cp_email',

@@ -14,8 +14,8 @@ class Company
     {
         return $next($request);
 
-        if(Auth::guard('company')->check()){
-            return redirect()->route('company.main');
+        if(!Auth::guard('company')->check()){
+            return redirect()->route('company.login');
         };
     }
 }

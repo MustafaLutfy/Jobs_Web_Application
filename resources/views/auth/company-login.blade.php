@@ -1,15 +1,18 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
-    <form method="POST" action="{{ route('user.login') }}">
+
+    @if (Session::has('error'))
+        {{'Email or Password incorrcet'}}
+    @endif
+    <form method="POST" action="{{ route('company.login') }}">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="cp_email" :value="__('cp_email')" />
+            <x-text-input id="cp_email" class="block mt-1 w-full" type="email" name="cp_email" :value="old('cp_email')" required autofocus autocomplete="cp_email" />
+            <x-input-error :messages="$errors->get('cp_email')" class="mt-2" />
         </div>
 
         <!-- Password -->

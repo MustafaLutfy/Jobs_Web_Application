@@ -70,11 +70,9 @@ class RegisteredCompanyController extends Controller
             
          ]);
 
-        event(new Registered($company));
 
-        Auth::login($company);
 
-        return redirect()->route('home');
+         return redirect()->route('company.dashboard');
        
     }
 }
