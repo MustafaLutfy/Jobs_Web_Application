@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\RegisteredCompanyController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\SkillsController;
 
 Route::middleware('guest')->group(function () {
     Route::get('user/register', [RegisteredUserController::class, 'create']);
@@ -59,5 +60,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('user/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('user.logout');
+
+    Route::post('profile/skill/add', [SkillsController::class, 'addSkill'])->name('add.skill');
 
 });

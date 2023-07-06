@@ -9,7 +9,7 @@
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    {{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
@@ -60,5 +60,5 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
-    </form>
+    </form> --}}
 </section>

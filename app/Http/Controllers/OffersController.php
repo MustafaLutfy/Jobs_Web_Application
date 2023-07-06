@@ -22,7 +22,9 @@ class OffersController extends Controller
      */
     public function create()
     {
-        return view('company.make-offer');
+        $jobs = Job::get('job_title');
+    
+        return view('company.make-offer')->with('jobs',$jobs);
     }
 
     /**

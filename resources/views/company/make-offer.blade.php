@@ -29,20 +29,20 @@
         </div>
 
         
-        <div class="block mt-4">
+        {{-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> --}}
+       
+        <select name="job_title" id="job_title">
 
-        <select name="job_title" id="">
-    
-            <option value="Programmer">Programmer</option>
-            <option value="Designer">Designer</option>
-            
+            @foreach ($jobs as $job)
+              <option value="{{$job->job_title}}">{{$job->job_title}}</option>
+            @endforeach
+
         </select>
-            
             <x-primary-button class="ml-3">
                 {{ __('Submit') }}
             </x-primary-button>
