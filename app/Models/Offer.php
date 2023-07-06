@@ -24,4 +24,14 @@ class Offer extends Model
        return $this->hasMany(Apply::class);
    }
    
+
+   protected $fillable = [
+            'company_id',
+            'job_id',
+            'last_name' ,
+            'requirments', 
+            'responsibilities',
+            'salary',
+        //  'work_time'
+   ];
 }

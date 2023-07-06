@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OffersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisteredCompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +23,34 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('company')->group(function () {
 
-    Route::get('/register', [ProfileController::class, 'register'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('dashboard',function(){
+        if(!Auth::guard('company')->check()){
+            return view("auth.company-login")->with('error','Please Login first');
+        }
+        else{
+            return view('company.dashboard');
+        }
+    
+    
+    })->name('company.dashboard');
+    
+    Route::get('/login', [AuthenticatedSessionController::class, 'companyCreate']);
+    Route::post('/login', [CompanyController::class, 'login'])->name('company.login');
 
-});
+    Route::get('/register', [RegisteredCompanyController::class, 'create']);
+    Route::post('/register', [RegisteredCompanyController::class, 'store'])->name('company.register');
+    })->middleware('guest');
+
+    Route::post('logout', [CompanyController::class, 'logout'])->name('company.logout');
+
+   
+    Route::get('company/offer/create', [OffersController::class, 'create']);
+    Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
+
 
 /*------------End Company Routes---------------*/
 
-Route::get('/company/dashboard',function(){
-    if(Auth::guard('company')->check()){
 
-        return view('company.dashboard');
-    }
-    else{
-        return view("auth.company-login");
-        }
-
-
-})->name('company.dashboard');
 
 
 
@@ -44,9 +58,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', function () {
+Route::get('/user/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

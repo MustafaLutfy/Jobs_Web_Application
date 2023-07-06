@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Company;
+use App\Providers\RouteServiceProvider;
 
 
 class CompanyController extends Controller
@@ -17,7 +18,7 @@ class CompanyController extends Controller
 
     public function login(Request $request)
     {
-        
+
         $request->validate([
             'cp_email' => ['required', 'email', 'max:60'],
             'password' => ['required', 'min:8'],
@@ -26,21 +27,18 @@ class CompanyController extends Controller
 
         if(Auth::guard('company')->attempt($login)){
 
-            return redirect()->route('company.dashboard');
+            return redirect()->intended(RouteServiceProvider::COMPANY_HOME);
 
         }
         else{
             return redirect()->route('company.login');
-            
         }
-
     }
+
     public function logout(Request $request): RedirectResponse
     {
         Auth::guard('company')->logout();
-
-        $request->session()->invalidate();
-
+        
         $request->session()->regenerateToken();
 
         return redirect('/');
