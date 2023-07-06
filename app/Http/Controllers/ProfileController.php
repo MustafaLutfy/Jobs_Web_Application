@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Skill;
+use App\Models\Language;
 
 class ProfileController extends Controller
 {
@@ -16,9 +18,15 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $skills = Skill::get('skill_title');
+        $languages = Language::get('language');
+
         return view('profile.edit', [
             'user' => $request->user(),
-        ]);
+        ])->with([
+            'skills' => $skills,
+            'languages' =>  $languages,
+    ]);
     }
 
     /**

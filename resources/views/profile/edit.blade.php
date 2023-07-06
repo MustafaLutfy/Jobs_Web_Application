@@ -29,6 +29,21 @@
                     @include('profile.partials.add-skill-form')
                 </div>
             </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.add-education-form')
+                </div>
+            </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.add-exp-form')
+                </div>
+            </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.add-language-form')
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

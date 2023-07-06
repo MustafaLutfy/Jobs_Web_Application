@@ -13,6 +13,9 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\LanguagesController;
 
 Route::middleware('guest')->group(function () {
     Route::get('user/register', [RegisteredUserController::class, 'create']);
@@ -61,6 +64,20 @@ Route::middleware('auth')->group(function () {
     Route::post('user/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('user.logout');
 
+
     Route::post('profile/skill/add', [SkillsController::class, 'addSkill'])->name('add.skill');
+    Route::post('profile/education/add', [EducationController::class, 'addEducation'])->name('add.education');
+    Route::post('profile/experience/add', [ExperienceController::class, 'addExperience'])->name('add.experience');
+    Route::post('profile/language/add', [LanguagesController::class, 'addLanguage'])->name('add.language');
+
+    /*--------------Profile Routes---------------*/
+
+
+    // Route::prefix('profile')->group(function(){
+        
+    // });
+    
+   /*--------------End Profile Routes---------------*/
+
 
 });

@@ -9,6 +9,12 @@ class Education extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'institution_name', 
+        'from_date', 
+        'to_date', 
+    ];
 
    public function user(): BelongsTo
    {

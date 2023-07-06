@@ -10,6 +10,7 @@ use App\Models\UserSkill;
 class SkillsController extends Controller
 {
     public function addSkill(Request $request){
+
         $skillId = Skill::where('skill_title',$request->skill)->get()->value('id');
         if(Auth::user()){
             $skill = UserSkill::create([

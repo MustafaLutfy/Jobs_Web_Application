@@ -15,11 +15,11 @@
 
     <form method="post" action="{{ route('add.skill') }}" class="mt-6 space-y-6">
         @csrf
-       
 
         <select name="skill" id="skill">
-            <option value="FrontEnd">FrontEnd</option>
-            <option value="BackEnd">BackEnd</option>
+            @foreach ($skills as $skill )
+              <option value="{{$skill->skill_title}}">{{$skill->skill_title}}</option>
+            @endforeach
         </select>
 
         <div class="flex items-center gap-4">
