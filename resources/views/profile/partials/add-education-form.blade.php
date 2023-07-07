@@ -17,8 +17,6 @@
         <div>
             <x-input-label for="institution_name" :value="__('institution_name	')" />
             <x-text-input id="institution_name" name="institution_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="institution_name" />
-            {{-- <x-text-input id="from_date" name="from_date" type="date" class="mt-1 block w-full" placeholder="From" required autofocus autocomplete="from_date" />
-            <x-text-input id="to_date" name="to_date" type="date" class="mt-1 block w-full" placeholder="To" required autofocus autocomplete="to_date" /> --}}
             <select name="from_date" id="from_date">
                 <option>From</option>
                 <option value="2010">2010</option>

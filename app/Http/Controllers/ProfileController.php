@@ -10,9 +10,28 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Skill;
 use App\Models\Language;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+
+    public function isSearching(Request $request)
+    {
+
+
+        $user = User::find(Auth::user()->id);
+
+        $current = $user->job_searching;
+        
+         if($user){
+             $user->job_searching = $request->is_searching;
+            $user->save();
+           
+         }
+
+        return redirect('profile');
+    
+    }
     /**
      * Display the user's profile form.
      */
@@ -20,12 +39,15 @@ class ProfileController extends Controller
     {
         $skills = Skill::get('skill_title');
         $languages = Language::get('language');
+        $user = User::find(Auth::user()->id);
+        $current = $user->job_searching == 1 ? 'checked' : '';
 
         return view('profile.edit', [
             'user' => $request->user(),
         ])->with([
             'skills' => $skills,
             'languages' =>  $languages,
+            'current' => $current,
     ]);
     }
 
