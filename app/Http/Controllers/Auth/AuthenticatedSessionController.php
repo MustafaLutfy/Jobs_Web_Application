@@ -19,11 +19,24 @@ class AuthenticatedSessionController extends Controller
      */
     public function userCreate(): View
     {
-        return view('auth.login');
+
+        if(Auth::guard('web')->check() || Auth::guard('company')->check()){
+            abort(403,"Something went wrong!");
+        }
+        else{
+            return view('auth.login');
+        }
+        
     }
     public function companyCreate(): View
     {
-        return view('auth.company-login');
+        if(Auth::guard('web')->check() || Auth::guard('company')->check()){
+            abort(403,"You are already logged in!");
+        }
+        else{
+            return view('auth.company-login');
+        }
+        
     }
 
     /**

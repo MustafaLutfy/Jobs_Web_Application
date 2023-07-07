@@ -26,7 +26,7 @@ Route::prefix('company')->group(function () {
 
     Route::get('dashboard',function(){
         if(!Auth::guard('company')->check()){
-            return view("auth.company-login")->with('error','Please Login first');
+            return redirect('company/login')->with('error','Please Login first');
         }
         else{
             return view('company.dashboard');

@@ -32,6 +32,6 @@
             @endif
              --}}
             
-               {{ dd(Auth::guard('company')->check()) }}
+               {{ dd(Auth::check()) }}
     </body>
 </html>
