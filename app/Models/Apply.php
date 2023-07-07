@@ -9,6 +9,12 @@ class Apply extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'offer_id', 
+        'description',
+    ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

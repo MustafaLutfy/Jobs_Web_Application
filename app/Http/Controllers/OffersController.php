@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Offer;
+use App\Models\Apply;
 
 class OffersController extends Controller
 {
@@ -27,9 +28,31 @@ class OffersController extends Controller
         return view('company.make-offer')->with('jobs',$jobs);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function createApply($id){
+        return view('job-apply')->with([
+            'id'=> $id,
+        ]);
+    }
+    public function Apply(Request $request, $id){
+        // $request->validate([
+            
+        //     'description' => ['nullable','string'],
+
+        // ]);
+     
+         
+        if(Auth::user()){
+            $apply = Apply::create([
+                'offer_id' => $id,
+                'user_id' => Auth::user()->id,
+                'description' => $request->description,
+            ]);
+            
+            return redirect('offers')->with('msg','Job Offer Published');
+
+        }
+    }
+    
     public function store(Request $request)
     {
 
