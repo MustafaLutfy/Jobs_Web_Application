@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('profile/skill/add', [SkillsController::class, 'addSkill'])->name('add.skill');
+    Route::delete('profile/skill/remove/{id}', [SkillsController::class, 'removeSkill'])->name('skill.remove');
     Route::post('profile/education/add', [EducationController::class, 'addEducation'])->name('add.education');
     Route::post('profile/experience/add', [ExperienceController::class, 'addExperience'])->name('add.experience');
     Route::post('profile/language/add', [LanguagesController::class, 'addLanguage'])->name('add.language');

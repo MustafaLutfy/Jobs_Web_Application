@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\Skill;
 use App\Models\Language;
 use App\Models\User;
+use App\Models\UserSkill;
 
 class ProfileController extends Controller
 {
@@ -39,15 +40,16 @@ class ProfileController extends Controller
     {
         $skills = Skill::get('skill_title');
         $languages = Language::get('language');
+        $userSkills = UserSkill::where('user_id', Auth::user()->id)->get('skill_id');
         $user = User::find(Auth::user()->id);
         $current = $user->job_searching == 1 ? 'checked' : '';
-
         return view('profile.edit', [
             'user' => $request->user(),
         ])->with([
             'skills' => $skills,
             'languages' =>  $languages,
             'current' => $current,
+            'userSkills' => $userSkills,
     ]);
     }
 
