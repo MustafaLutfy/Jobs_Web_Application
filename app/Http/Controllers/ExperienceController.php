@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Auth; 
 use Illuminate\Http\Request;
-use App\Models\Education;
 use App\Models\Experience;
 
 class ExperienceController extends Controller
@@ -20,4 +19,11 @@ class ExperienceController extends Controller
         return redirect('profile')->with('msg','Education Added');
     }
     }
+
+
+    public function removeExperience($org_name){
+        Experience::where('org_name', $org_name)->delete();  
+        return redirect('profile');
+
+}
 }

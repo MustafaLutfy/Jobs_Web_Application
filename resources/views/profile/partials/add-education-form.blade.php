@@ -47,4 +47,20 @@
             <x-primary-button>{{ __('Add') }}</x-primary-button>
         </div>
     </form>
+
+
+    @foreach ($userEdus as $key => $userEdu )
+    <form method="post" action="{{ route('remove.education', $userEdus[$key]->institution_name) }}" class="mt-6 space-y-6">
+        @csrf
+        @method('delete')
+        <ul class="flex">
+           
+                <li class="ml-4">{{$userEdu->institution_name}}</li>
+                <li class="ml-4">{{$userEdu->from_date}}</li>
+                <li class="ml-4">{{$userEdu->to_date}}</li>
+                <button type='button' onclick="this.form.submit()" class="text-lg ml-2 font-bold text-red-400">X</button>
+            
+        </ul>
+    </form>
+    @endforeach
 </section>

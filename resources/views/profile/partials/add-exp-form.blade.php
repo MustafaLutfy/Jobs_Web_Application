@@ -50,4 +50,20 @@
             <x-primary-button>{{ __('Add') }}</x-primary-button>
         </div>
     </form>
+
+
+    @foreach ($userExps as $key => $userExp )
+    <form method="post" action="{{ route('remove.experience', $userExps[$key]->org_name) }}" class="mt-6 space-y-6">
+        @csrf
+        @method('delete')
+        <ul class="flex">
+           
+                <li class="ml-4">{{$userExp->org_name}}</li>
+                <li class="ml-4">{{$userExp->from_date}}</li>
+                <li class="ml-4">{{$userExp->to_date}}</li>
+                <button type='button' onclick="this.form.submit()" class="text-lg ml-2 font-bold text-red-400">X</button>
+            
+        </ul>
+    </form>
+    @endforeach
 </section>

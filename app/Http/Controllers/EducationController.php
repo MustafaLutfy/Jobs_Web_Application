@@ -19,4 +19,9 @@ class EducationController extends Controller
         return redirect('profile')->with('msg','Education Added');
     }
     }
+
+    public function removeEducation($institution_name){
+        Education::where('institution_name', $institution_name)->delete();  
+        return redirect('profile');
+    }
 }
