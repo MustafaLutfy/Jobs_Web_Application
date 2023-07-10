@@ -20,6 +20,10 @@ class Offer extends Model
    {
        return $this->belongsToMany(Skill::class);
    }
+   public function job(): belongsTo
+   {
+       return $this->belongsTo(Job::class);
+   }
 
    public function applies(): HasMany
    {

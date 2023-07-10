@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('offers')">
                         {{ __('Offers') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('get.user.applies')">
+                        {{ __('My Appliences') }}
+                    </x-nav-link>
                 </div>
             </div>
 

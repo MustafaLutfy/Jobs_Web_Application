@@ -19,7 +19,7 @@ class Apply extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function job()
+    public function offer()
     {
         return $this->belongsTo(Offer::class);
     }

@@ -63,7 +63,9 @@ Route::get('/user/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/offers', [PagesController::class, 'getOffers'])->middleware(['auth', 'verified'])->name('offers');
+Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
+Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.user.applies');
+Route::delete('/offer/remove/{id}', [OffersController::class, 'removeOffer'])->name('remove.offer');
 Route::get('/offer/apply/{id}', [OffersController::class, 'createApply'])->middleware(['auth', 'verified'])->name('get.job.apply');
 Route::post('/offer/apply/{id}', [OffersController::class, 'Apply'])->middleware(['auth', 'verified'])->name('job.apply');
 

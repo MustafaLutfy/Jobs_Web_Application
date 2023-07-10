@@ -14,6 +14,10 @@ class Job extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
 
   
 }

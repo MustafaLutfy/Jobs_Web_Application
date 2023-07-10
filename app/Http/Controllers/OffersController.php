@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Offer;
+use App\Models\UserOffer;
 use App\Models\Apply;
 
 class OffersController extends Controller
@@ -112,8 +113,12 @@ class OffersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function removeOffer(string $id)
     {
-        //
+        if(Auth::guard('company')){
+            Offer::where('id', $id)->delete();  
+        }
+        return redirect('offers');
+        
     }
 }

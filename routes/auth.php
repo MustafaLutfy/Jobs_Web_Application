@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::post('profile/experience/add', [ExperienceController::class, 'addExperience'])->name('add.experience');
     Route::delete('profile/experience/remove/{id}', [ExperienceController::class, 'removeExperience'])->name('remove.experience');
     Route::post('profile/language/add', [LanguagesController::class, 'addLanguage'])->name('add.language');
+    Route::delete('profile/language/remove/{id}', [LanguagesController::class, 'removeLanguage'])->name('remove.language');
 
     /*--------------Profile Routes---------------*/
 

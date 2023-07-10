@@ -12,6 +12,7 @@ use App\Models\Skill;
 use App\Models\Language;
 use App\Models\User;
 use App\Models\UserSkill;
+use App\Models\UserLanguage;
 use App\Models\Education;
 use App\Models\Experience;
 
@@ -45,6 +46,7 @@ class ProfileController extends Controller
         $userSkills = UserSkill::where('user_id', Auth::user()->id)->get('skill_id');
         $userEdus = Education::where('user_id', Auth::user()->id)->get();
         $userExps = Experience::where('user_id', Auth::user()->id)->get();
+        $userLanguages = UserLanguage::where('user_id', Auth::user()->id)->get();
         $user = User::find(Auth::user()->id);
         $current = $user->job_searching == 1 ? 'checked' : '';
         
@@ -57,6 +59,7 @@ class ProfileController extends Controller
             'current' => $current,
             'userSkills' => $userSkills,
             'userEdus' => $userEdus,
+            'userLanguages' => $userLanguages,
     ]);
     }
 

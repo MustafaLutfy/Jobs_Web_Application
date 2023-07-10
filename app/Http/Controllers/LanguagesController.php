@@ -23,4 +23,9 @@ class LanguagesController extends Controller
         return redirect('profile')->with('msg','Language Added');
        }
     }
+
+    public function removeLanguage($id){
+        UserLanguage::where('lang_id', $id)->delete();  
+        return redirect('profile');
+    }
 }
