@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                'user-dashboard-bg': "url('/assets/pexels-sora-shimazaki-5668859.jpg')",
+            }
         },
     },
 

@@ -12,7 +12,7 @@
         Job Responsibilities : {{$job_apply->offer->responsibilities}}<br>
         Job Salary : {{$job_apply->offer->salary}}<br>
         Work Time : Fulltime <br>
-        status : {{$job_apply->offer->status}}
+        status : {{$job_apply->offer->status == null ? 'Waiting...' : $job_apply->offer->status}}
             {{-- <div class="flex items-center gap-4">
                 <a href="{{ route('get.job.apply',  [ 'id' => $offer->id]) }}"><button>{{ __('Apply') }}</button></a>
             </div> --}}

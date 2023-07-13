@@ -29,6 +29,8 @@ class OffersController extends Controller
         return view('company.make-offer')->with('jobs',$jobs);
     }
 
+
+
     public function createApply($id){
         return view('job-apply')->with([
             'id'=> $id,

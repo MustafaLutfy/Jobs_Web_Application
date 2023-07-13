@@ -48,6 +48,7 @@ Route::prefix('company')->group(function () {
     Route::get('company/offer/create', [OffersController::class, 'create']);
     Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
 
+    Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
 
 /*------------End Company Routes---------------*/
 
