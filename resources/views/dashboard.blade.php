@@ -71,9 +71,9 @@
                         src="{{ url('/assets/podpros-GEnCnYhA1J4-unsplash-removebg-preview.png') }}" alt="">
                 </div>
                 <span
-                    class="px-[25px] z-0 py-[10px] text-[24px] bg-[#FFE8D0] text-[#b497dd] rounded-md absolute top-20 -left-12 ">Design</span>
+                    class="px-[25px] z-0 py-[10px] text-[24px] bg-[#FFE8D0] text-[#b497dd] rounded-md absolute top-20 -left-12 ">Marketing</span>
                 <span
-                    class="px-[25px] z-0 py-[10px] text-[24px] bg-[#FFE8D0] text-[#b497dd] rounded-md absolute top-10 -right-12 ">Design</span>
+                    class="px-[25px] z-0 py-[10px] text-[24px] bg-[#FFE8D0] text-[#b497dd] rounded-md absolute top-10 -right-12 ">Coding</span>
                 <span
                     class="px-[25px] z-0 py-[10px] text-[24px] bg-[#FFE8D0] text-[#b497dd] rounded-md absolute bottom-4 -right-12 ">Design</span>
             </div>
@@ -165,18 +165,26 @@
 
 
 
-    <div class="flex h-[100vh] items-center justify-center cursor-pointer flex-col gap-4 bg-[#F7F7F8]">
+    <div class="flex h-[100vh] mt-40 items-center justify-center cursor-pointer flex-col gap-4 bg-[#F7F7F8]">
+        @foreach ($offers as $offer)
+            
+       
         <div
             class="group w-[60vw] h-[150px] border flex items-center p-4 px-6 transition duration-300 hover:drop-shadow-lg drop-shadow-sm hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
-            <img class="h-[94%]" src="{{ url('assets/ae1bf8bbff7e9b4af2479d140e85b0d2.png') }}" alt="">
+            <img class="h-[94%]" src="{{ $offer->company->cp_logo_path ? url('assets/sample.jpg') : url('images/' . $offer->company->cp_logo_path)}}" alt="">
             <div class="h-[100%] flex ml-4 justify-between flex-col">
                 <div class="flex">
 
-                    <h3 class="text-xl mx-4 font-bold">Mobile application developer</h3>
+                    <h3 class="text-xl mx-4 font-bold">{{$offer->job->job_title}}</h3>
                     <div
                         class="px-3 py-1 transition-all duration-300 group-hover:bg-[#9F94CB] rounded-md text-white bg-gray-300 offer-hover:bg-[#9F94CB]">
                         Full time
                     </div>
+
+                </div>
+                <div class="flex">
+
+                    <h3 class="text-md mb-6 mx-4">{{$offer->company->cp_name}}</h3>
 
                 </div>
                 <div class="flex items-end">
@@ -226,6 +234,8 @@
                     <button class="bg-[#9F94CB] text-white rounded-md max-h-[38px] px-3 py-1">Apply Now</button>
                 </div>
             </div>
+        </div>
+        @endforeach
         </div>
     </div>
 

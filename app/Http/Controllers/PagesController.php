@@ -33,4 +33,11 @@ class PagesController extends Controller
         ]);
     }
     
+    public function getUserHome(){
+        $offers = Offer::get();
+        return view('dashboard')->with([
+            'offers'=> $offers,
+        ]);
+    }
+    
 }

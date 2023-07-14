@@ -60,9 +60,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/user/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
 Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.user.applies');
