@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_job_appliens', function (Blueprint $table) {
+        Schema::create('applies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('offer_id');
-            $table->foreign('offer_id')->references('id')->on('company_job_offers');
+            $table->foreign('offer_id')->references('id')->on('offers');
             $table->longText('description');
             $table->enum('status', ['Waiting', 'Declined', 'Accepted'])->nullable();
             $table->timestamps();

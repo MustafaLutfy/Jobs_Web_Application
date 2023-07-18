@@ -63,6 +63,7 @@ Route::get('/', function () {
 
 
 Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/offer/{id}', [PagesController::class, 'getOffer'])->middleware(['auth', 'verified'])->name('offer.show');
 
 Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
 Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.user.applies');

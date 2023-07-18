@@ -59,32 +59,32 @@ class OffersController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request);
+        return $request;
         $request->validate([
             // 'company_id' => ['required', 'numeric'],
             // 'job_id' => ['required', 'numeric'],
-            'requirments' => ['required','string'],
-            'responsibilities' => ['required','string'],
-            'salary' => ['required', 'string', 'max:30'], 
+            // 'requirments' => ['required','string'],
+            // 'responsibilities' => ['required','string'],
+            // 'salary' => ['required', 'string', 'max:30'], 
         //  'work_time' => ['required', 'string', 'max:30'],
 
         ]);
 
-        if(Auth::guard('company')->check()){
-            $offer = Offer::create([
-                'company_id' => Auth::guard('company')->id(),
-                'job_id' => Job::where('job_title',$request->job_title)->value('id'),
-                'requirments' => $request->requirments,
-                'responsibilities' => $request->responsibilities,
-                'salary' => $request->salary,
-            ]);
+        // if(Auth::guard('company')->check()){
+        //     $offer = Offer::create([
+        //         'company_id' => Auth::guard('company')->id(),
+        //         'job_id' => Job::where('job_title',$request->job_title)->value('id'),
+        //         'requirments' => $request->requirments,
+        //         'responsibilities' => $request->responsibilities,
+        //         'salary' => $request->salary,
+        //     ]);
             
-            return redirect()->back()->with('msg','Job Offer Published');
+        //     return redirect()->back()->with('msg','Job Offer Published');
 
-        }
-        else{
-            return redirect()->back()->with('msg','Pls loging first');
-        }
+        // }
+        // else{
+        //     return redirect()->back()->with('msg','Pls loging first');
+        // }
        
     }
 

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->longText('responsibilities');
             $table->string('salary')->nullable();
             $table->enum('work_time', ['FullTime', 'PartTime'])->nullable();
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->timestamps();
         });
     }

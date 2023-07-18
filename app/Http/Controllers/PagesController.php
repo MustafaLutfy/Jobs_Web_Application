@@ -39,5 +39,12 @@ class PagesController extends Controller
             'offers'=> $offers,
         ]);
     }
+
+    public function getOffer($id){
+        $offer = Offer::where('id', $id)->get()->first();
+        return view('offer-show')->with([
+            'offer'=> $offer,
+        ]);
+    }
     
 }
