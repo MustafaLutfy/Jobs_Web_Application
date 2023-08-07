@@ -3,9 +3,7 @@
 
     <div class="w-full h-16 flex justify-center mt-16">
         <div class="w-[80%] bg-white h-full rounded-lg flex justify-between items-center p-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#9CA3AF" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z"/></svg>
-            <input class="w-[20%] focus:outline-none focus:ring-0 border-0 border-b-2 border-gray-200" type="text" placeholder="Search by job title">
-        
+            
             <select id="underline_select" class="block w-[25vw] py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option selected>Choose a country</option>
                 <option value="US">United States</option>
@@ -23,14 +21,16 @@
             <button class="bg-[#9F94CB] text-white rounded-md px-2 py-2 ">Search</button>
 
         </div>
-            
+            <!--end search bar-->
     </div>
   <div class="w-full flex justify-center items-center p-10">
-    <div class="container m-auto grid grid-cols-3 bg-red-400">
+    <div class="w-[80vw] gap-10 grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 items-center">
         @foreach ($offers as $offer)
-        <a href="{{url('offer/' . $offer->id)}}">
+       
+        
+        <a href="{{url('offer/' . $offer->id)}} " class="mx-auto">
             <div 
-                class="group max-w-[450px] h-[250px] border flex items-start p-4 drop-shadow-md transition duration-300 hover:drop-shadow-lg  hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
+                class="group sm:w-[450px] w-[80vw] h-[250px] border flex items-start p-4 drop-shadow-md transition duration-300 hover:drop-shadow-lg  hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
                 <div class="flex flex-col h-full w-[100%]">
                     <div class="flex items-center mb-4 mt-4">
                         <img class="h-[60px] w-[60px] rounded-full p-2 ml-4 border-8 border-[#E9E6F3] transition duration-300 group-hover:border-[#9F94CB]"
@@ -42,14 +42,12 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 3H8a2 2 0 0 0-2 2v16l6-3l6 3V5a2 2 0 0 0-2-2Z" />
                             </svg>
-                                @csrf
-                                <a href="{{route('job.apply', $offer->id)}}" class="bg-[#9F94CB] text-white rounded-md w-full px-2 ">Apply Now</a>
-    
+                                
+                              
+                                    <button class="bg-[#9F94CB] text-white rounded-md w-full px-2 " href="{{route('job.apply', $offer->id)}}">Apply Now</button>
                         </div>
-                        
                     </div>
                     
-               
                 <div class="mt-auto mb-6">
                     <div class="flex ">
                         <div class="flex justify-between w-[100%]">
@@ -96,6 +94,8 @@
                     
             </div>
         </a>
+        
+       
       
         @endforeach
     <div>

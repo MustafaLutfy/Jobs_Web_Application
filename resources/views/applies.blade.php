@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="bg-[#F7F7F8]  h-[100vh] w-[100%] flex justify-center py-20">
-        <div class="w-[60%] bg-white rounded-xl border p-10">
+        <div class="w-[60%] rounded-xl border p-10 ">
 
     <ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($job_applies as $job_apply)
         <a href="{{url('offer/' . $job_apply->id)}}">
+            <!-- offer -->
             <div 
-                class="group w-full h-[150px] border flex items-center p-4 px-6 transition duration-300 hover:drop-shadow-lg drop-shadow-sm hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
+                class="group w-full  h-[150px] border flex items-center p-4 px-6 transition duration-300 hover:drop-shadow-lg drop-shadow-sm hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
                 <img class="h-[94%] rounded-md"
                     src="{{ $job_apply->offer->company->cp_logo_path == 0 ? url('assets/sample.jpg') : url('users_images/' . $job_apply->offer->company->cp_logo_path) }}"
                     alt="">
@@ -67,7 +68,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 3H8a2 2 0 0 0-2 2v16l6-3l6 3V5a2 2 0 0 0-2-2Z" />
                         </svg>
-                        <button class="bg-[#9F94CB] text-white rounded-md max-h-[38px] px-3 py-1">Apply Now</button>
+                        <button class="bg-[#9F94CB] text-white rounded-md place-self-center md:text-[16px] h-[28px] max-h-[38px] px-3">Apply Now</button>
                     </div>
                 </div>
             </div>

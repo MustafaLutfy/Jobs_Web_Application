@@ -4,12 +4,13 @@
     <div class="flex items-center  h-[90vh] bg-[#F7F7F8]">
 
         <div class="flex justify-center flex-col h-[100%] w-[60vw] p-40">
-            <h1 class="text-[#7B6AB8] text-[60px] font-bold">Connecting talents<br>with apportionities</h1>
-            <p class="mt-6">Our platform was designed to connect talented indivisuals live you<br>
+            <!-- heading -->
+            <h1 class="text-[#7B6AB8] text-[40px] 2xl:text-[60px] font-bold">Connecting talents<br>with apportionities</h1>
+            <p class="mt-6 md:text-[18px]">Our platform was designed to connect talented indivisuals live you
                 with a vast array of job opening cross various indastries and sectors
             </p>
             <div>
-
+            <!-- job type button-->
                 <div class="flex mt-6 gap-10">
                     <div class="inline-flex text-lg font-semibold items-center">
                         <label class="relative flex cursor-pointer items-center rounded-full p-3" for="html"
@@ -48,17 +49,18 @@
                 </div>
 
             </div>
-
-            <div class="flex mt-6 bg-white p-2 rounded-lg">
+            <!-- search for job -->
+            <div class="flex bg-white p-2 rounded-lg w-fit">
                 <input
                     class="focus:outline-none border-none focus:ring-white placeholder:text-lg focus:border-none w-[30vw] rounded-md "
                     placeholder="Search for anything..." name="search" type="text">
-                <button class="px-12 py-4 bg-[#7767b5] ml-auto text-[22px] text-white rounded-md">Search</button>
+                <button class="px-6 py-2 2xl:px-12 2xl:py-4 bg-[#7767b5] ml-auto text-[22px] text-white rounded-md">Search</button>
             </div>
         </div>
+        <!-- end search bar -->
 
-
-        <div class="h-[100%] w-[40vw] flex items-center justify-center">
+        <!-- image -->
+        <div class="h-[100%] w-[40vw] flex items-center justify-center sm:w-[350vw]:hidden">
             <div class="w-[50%] h-[50%] relative">
 
                 <div class="h-[100%] rounded-[40px] bg-gradient-to-b from-[#b497dd] to-[#7767b5] flex items-end">
@@ -74,8 +76,9 @@
             </div>
         </div>
     </div>
+    <!-- end image -->
 
-
+    <!-- categories -->
     <h1 class="text-4xl pl-40 pb-10 bg-[#F7F7F8] font-semibold">categories that matches your skills</h1>
 
     <div class="flex gap-8 px-40 pb-20 bg-[#F7F7F8] ">
@@ -148,7 +151,7 @@
             <p class="ml-4 text-gray-700 group-hover:text-white transition-all duration-300">Fine more catigories</p>
         </div>
     </div>
-
+    <!-- end categories -->
 
     <div style="background-image:url({{ url('assets/pexels-sora-shimazaki-5668859.jpg') }});"
         class="h-[100vh] w-[100%] bg-cover overflow-x-hidden flex justify-center items-center">
@@ -160,7 +163,7 @@
 
 
 
-
+    <!-- offers section-->
     <div class="flex h-[100vh] pt-40 items-center justify-center cursor-pointer flex-col gap-4 bg-[#F7F7F8]">
         @foreach ($offers as $offer)
         <a href="{{url('offer/' . $offer->id)}}">
@@ -240,7 +243,7 @@
 
 
 
-
+    <!-- how to use the site -->
     <div class="flex items-center justify-center gap-20 h-[100vh] w-[100vw] bg-[#F7F7F8]">
 
         <div class="h-[55%] w-[20vw] rounded-xl bg-[#D5D1E7] flex flex-col items-center justify-center">
