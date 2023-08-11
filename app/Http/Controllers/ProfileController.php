@@ -36,9 +36,7 @@ class ProfileController extends Controller
         return redirect('profile');
     
     }
-    /**
-     * Display the user's profile form.
-     */
+
     public function edit(Request $request): View
     {
         $skills = Skill::get('skill_title');
@@ -50,7 +48,7 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
         $current = $user->job_searching == 1 ? 'checked' : '';
         
-        return view('profile.edit', [
+        return view('profile', [
             'user' => $request->user(),
         ])->with([
             'userExps' => $userExps,

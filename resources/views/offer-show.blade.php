@@ -9,7 +9,7 @@
                     <div class="flex justify-between w-[100%]">
 
                         <h3 class="text-lg mx-4 font-bold overflow-hidden whitespace-nowrap">
-                            {{ $offer->job->job_title }} gergergergergre</h3>
+                            {{ $offer->job->job_title }}</h3>
 
                     </div>
                     <div class="flex">
@@ -57,13 +57,13 @@
                 <div class="ml-auto h-[100%]">
                     <div class="flex">
 
-
                         <svg class="stroke-[#9F94CB] fill-white cursor-pointer transition-all duration-300 hover:fill-[#9F94CB]"
                             xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 3H8a2 2 0 0 0-2 2v16l6-3l6 3V5a2 2 0 0 0-2-2Z" />
                         </svg>
-                        <button class="bg-[#9F94CB] text-white rounded-md max-h-[38px] px-3 py-1">Apply Now</button>
+                        <a href="{{route('job.apply', $offer->id)}}" class="bg-[#9F94CB] text-white text-center rounded-md w-full px-2 py-2 ">Apply Now</a>
+
                     </div>
                 </div>
             </div>

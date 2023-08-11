@@ -21,7 +21,10 @@
         </div>
         <div>
             <x-input-label for="salary" :value="__('salary')" />
-            <x-text-input id="salary" class="block mt-1 w-full" type="text" name="salary" :value="old('salary')" required autofocus autocomplete="salary" />
+            <div class="flex gap-3">
+                <x-text-input id="salary" class="block mt-1 w-full" type="text" name="minSalary" placeholder="Min in $" :value="old('salary')" required autofocus autocomplete="salary" />
+                <x-text-input id="salary" class="block mt-1 w-full" type="text" name="maxSalary" placeholder="Max in $" :value="old('salary')" required autofocus autocomplete="salary" />    
+            </div>
             <x-input-error :messages="$errors->get('salary')" class="mt-2" />
         </div>
         <div>

@@ -69,6 +69,8 @@ class OffersController extends Controller
         // //  'work_time' => ['required', 'string', 'max:30'],
 
         // ]);
+        
+        $salary = $request->minSalary .'$-'.$request->maxSalary.'$';
 
         if(Auth::guard('company')->check()){
             $offer = Offer::create([
@@ -76,7 +78,7 @@ class OffersController extends Controller
                 'job_id' => Job::where('job_title',$request->job_title)->value('id'),
                 'requirments' => $request->requirments,
                 'responsibilities' => $request->responsibilities,
-                'salary' => $request->salary,
+                'salary' => $salary,
             ]);
             
             return redirect()->back()->with('msg','Job Offer Published');
