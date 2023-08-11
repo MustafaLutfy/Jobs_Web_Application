@@ -15,6 +15,12 @@
         @csrf
         @method('patch')
 
+        <div class="flex items-center gap-10">
+                    <!-- image -->
+                    <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] mr-0"></div>
+                    <button class="bg-[#8A7BC8] text-white rounded-lg w-[30%] h-[38px] p-2">Upload profile photo</button>
+                    <button class="text-[#8A7BC8] rounded-lg w-[15%] h-[38px] border-[3px] border-[#8A7BC8]">Delete</button>
+        </div>
         <div class="flex w-[90%]">
                 <div>
                     <x-input-label class="text-[#8A7BC8]" for="name" :value="__('Fist Name')" />
