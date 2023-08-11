@@ -37,7 +37,7 @@ class ProfileController extends Controller
     
     }
 
-    public function edit(Request $request): View
+    public function profile(Request $request): View
     {
         $skills = Skill::get('skill_title');
         $languages = Language::get('language');
@@ -64,13 +64,43 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
+    public function edit(Request $request)
+    {   $skills = Skill::get('skill_title');
+        $languages = Language::get('language');
+        $userSkills = UserSkill::where('user_id', Auth::user()->id)->get('skill_id');
+        $userEdus = Education::where('user_id', Auth::user()->id)->get();
+        $userExps = Experience::where('user_id', Auth::user()->id)->get();
+        $userLanguages = UserLanguage::where('user_id', Auth::user()->id)->get();
+        $user = User::find(Auth::user()->id);
+        $current = $user->job_searching == 1 ? 'checked' : '';
+        
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ])->with([
+            'userExps' => $userExps,
+            'skills' => $skills,
+            'languages' =>  $languages,
+            'current' => $current,
+            'userSkills' => $userSkills,
+            'userEdus' => $userEdus,
+            'userLanguages' => $userLanguages,
+    ]);
+    }
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
+        // dd($request);
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+
+        $user = User::where('id', Auth::user()->id)->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone' => $request->phone,
+        ]);
 
         $request->user()->save();
 

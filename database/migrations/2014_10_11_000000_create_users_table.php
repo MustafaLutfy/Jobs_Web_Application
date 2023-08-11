@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->string('contact_email')->unique()->nullable();
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->longText('exp')->nullable();
+            $table->longText('discription')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('current_pos')->nullable();
             $table->boolean('job_searching')->nullable()->default(false);

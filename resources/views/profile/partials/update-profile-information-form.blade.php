@@ -1,15 +1,13 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+        <h2 class="text-lg font-medium text-[#8A7BC8]">
+            {{ __('Personal Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
+    
     </header>
 
-    {{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
@@ -17,15 +15,26 @@
         @csrf
         @method('patch')
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        <div class="flex w-[90%]">
+                <div>
+                    <x-input-label class="text-[#8A7BC8]" for="name" :value="__('Fist Name')" />
+                    <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" autofocus autocomplete="first_name" />
+                    <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+                </div>
+                <div class="ml-auto">
+                    <x-input-label class="text-[#8A7BC8]" for="last_name" :value="__('Last Name')" />
+                    <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)" autofocus autocomplete="last_name" />
+                    <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+                </div>  
         </div>
-
+        <div >
+            <x-input-label class="text-[#8A7BC8]" for="phone" :value="__('Phone Number')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-[90%]" :value="old('phone', $user->phone)" autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>  
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-input-label class="text-[#8A7BC8]" for="email" :value="__('Email')" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-[90%]" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
@@ -60,5 +69,5 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
-    </form> --}}
+    </form>
 </section>

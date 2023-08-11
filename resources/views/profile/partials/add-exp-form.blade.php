@@ -16,10 +16,12 @@
        
 
         <div>
-            <x-input-label for="org_name" :value="__('org_name	')" />
-            <x-text-input id="org_name" name="org_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="org_name" />
-            {{-- <x-text-input id="from_date" name="from_date" type="date" class="mt-1 block w-full" placeholder="From" required autofocus autocomplete="from_date" />
-            <x-text-input id="to_date" name="to_date" type="date" class="mt-1 block w-full" placeholder="To" required autofocus autocomplete="to_date" /> --}}
+            <div class="flex items-end gap-4">
+                <div class="w-[50%]">
+                    <x-input-label for="org_name" :value="__('org_name	')" />
+                    <x-text-input  id="org_name" name="org_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="org_name" />
+                    <x-input-error class="mt-2" :messages="$errors->get('org_name')" />
+                </div>
             <select name="from_date" id="from_date">
                 <option>From</option>
                 <option value="2010">2010</option>
@@ -42,11 +44,10 @@
                 <option value="2016">2016</option>
             </select>
         
-            <x-input-error class="mt-2" :messages="$errors->get('education')" />
         </div>
 
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 mt-6">
             <x-primary-button>{{ __('Add') }}</x-primary-button>
         </div>
     </form>

@@ -14,9 +14,12 @@
         @csrf
        
 
-        <div>
-            <x-input-label for="institution_name" :value="__('institution_name	')" />
-            <x-text-input id="institution_name" name="institution_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="institution_name" />
+        <div class="flex items-end gap-4">
+            <div class="w-[50%]">
+                <x-input-label for="institution_name" :value="__('institution_name	')" />
+                <x-text-input  id="institution_name" name="institution_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="institution_name" />
+                <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+            </div>
             <select name="from_date" id="from_date">
                 <option>From</option>
                 <option value="2010">2010</option>
@@ -38,8 +41,7 @@
                 <option value="2015">2015</option>
                 <option value="2016">2016</option>
             </select>
-        
-            <x-input-error class="mt-2" :messages="$errors->get('education')" />
+    
         </div>
 
 

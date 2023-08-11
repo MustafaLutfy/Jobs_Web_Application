@@ -1,11 +1,11 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+        <h2 class="text-lg font-medium text-[#8A7BC8]">
+            {{ __('Add Skills') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-1 text-sm text-gray-500">
+            {{ __("From here you can add delete or update your skills") }}
         </p>
     </header>
 
@@ -13,10 +13,10 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('add.skill') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('add.skill') }}" class="space-y-6">
         @csrf
 
-        <select name="skill" id="skill">
+        <select class="rounded-lg border-2 border-[#8A7BC8] w-[50%]" name="skill" id="skill">
             @foreach ($skills as $skill )
               <option value="{{$skill->skill_title}}">{{$skill->skill_title}}</option>
             @endforeach
@@ -25,7 +25,7 @@
         
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Add') }}</x-primary-button>
         </div>
     </form>
     @foreach ($userSkills as $key => $userSkill )

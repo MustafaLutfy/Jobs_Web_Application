@@ -61,14 +61,14 @@
             <div class="bg-white col-span-2">
                 <div class="h-[20vh] mt-10 flex items-center w-full ">
                     <div class="h-[16vh] w-full bg-[#B497DD] flex flex-col justify-center px-8">
-                        <h1 class="text-2xl text-white font-semibold">Mustafa Lutfy</h1>
+                        <h1 class="text-2xl text-white font-semibold">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h1>
                         <h1 class="text-md text-white font-thin">Software Engineer</h1>
                     </div>
                 </div>
                 <div class="h-auto w-full px-8 mb-10">
                     <h1 class="text-xl text-gray-700 font-semibold mb-1">About Me</h1>
                     <div class="h-[2px] w-full bg-gray-700"></div>
-                    <p class="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi fugiat nemo voluptate vel qui ipsa ducimus voluptas numquam repellat aut assumenda ex, voluptatibus quod dicta soluta totam. Fuga, eos culpa!</p>
+                    <p class="text-sm mt-2">{{Auth::user()->discription}}</p>
                 </div>
 
 
@@ -78,7 +78,7 @@
                     <ul class="mt-2">
                         @foreach ($userExps as $userExp)
                             <li class="text-sm flex mt-4">
-                                <p class="mr-8">{{$userExp->from_date}}-{{$userExp->from_date}}</p>
+                                <p class="mr-8">{{$userExp->from_date}}-{{$userExp->to_date}}</p>
                                 <div>
                                     <p>Progammer</p>
                                     <p>{{$userExp->org_name}} / location</p>

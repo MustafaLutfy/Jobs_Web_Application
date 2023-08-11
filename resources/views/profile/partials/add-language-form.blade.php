@@ -1,23 +1,23 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+        <h2 class="text-lg font-medium text-[#8A7BC8]">
+            {{ __('Add Language') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="mt-1 text-sm text-gray-500">
+            {{ __("From here you can add delete or update your languages") }}
         </p>
     </header>
 
 
     <form method="post" action="{{ route('add.language') }}" class="mt-6 space-y-6">
         @csrf
-        <select name="language" id="language">
+        <select class="rounded-lg rounded-tr-none rounded-br-none border-2 border-r-0 border-[#8A7BC8] w-[40%]" name="language" id="language">
             @foreach ($languages as $language)
                 <option value="{{ $language->language }}">{{ $language->language }}</option>
             @endforeach
         </select>
-        <select name="level" id="level">
+        <select class="rounded-lg rounded-tl-none rounded-bl-none border-2 border-l-0 -translate-x-1	 border-[#8A7BC8] w-[15%]" name="level" id="level">
             <option value="A1">A1</option>
             <option value="A2">A2</option>
             <option value="B1">B1</option>
@@ -28,7 +28,7 @@
         </select>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Add') }}</x-primary-button>
         </div>
     </form>
 

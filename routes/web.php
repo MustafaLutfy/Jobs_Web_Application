@@ -74,7 +74,8 @@ Route::post('/offer/apply/{id}', [OffersController::class, 'Apply'])->middleware
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.show');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/profile/searching', [ProfileController::class, 'isSearching'])->middleware(['auth', 'verified'])->name('is.searching');
