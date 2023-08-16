@@ -11,15 +11,26 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
         <div class="flex items-center gap-10">
                     <!-- image -->
-                    <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] mr-0"></div>
-                    <button class="bg-[#8A7BC8] text-white rounded-lg w-[30%] h-[38px] p-2">Upload profile photo</button>
-                    <button class="text-[#8A7BC8] rounded-lg w-[15%] h-[38px] border-[3px] border-[#8A7BC8]">Delete</button>
+                    <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] p-1 mr-0">
+                        <img class="rounded-full" src="{{asset('users_images/1689303913.png')}}" alt="">
+                    </div>
+
+                    <input
+                    type="file"
+                    class="block text-sm 
+                        file:mr-4 file:py-2 file:px-4 file:rounded-md
+                        file:border-0 file:text-sm file:font-semibold
+                        file:text-white
+                        file:bg-pink-50 file:bg-[#8A7BC8]
+                        hover:file:bg-[#8A7BC8]"
+                  />
+                <button class="text-[#8A7BC8] rounded-lg w-[15%] h-[38px] border-[2px] border-[#8A7BC8]">Delete</button>
         </div>
         <div class="flex w-[90%]">
                 <div>

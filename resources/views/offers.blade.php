@@ -82,7 +82,7 @@
                                         clip-rule="evenodd" />
                                 </g>
                             </svg>
-                            <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">500$-800$</span>
+                            <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->salary}}</span>
                         </div>
                     </div>
         
