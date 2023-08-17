@@ -23,21 +23,21 @@
         
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 gap-10 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link class="text-[#8B7FC0] hover:text-[#7868B6] hover:border-[#7868B6]" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            <x-guest-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                 {{ __('Dashboard') }}
-                            </x-nav-link>
+                            </x-guest-nav-link>
         
-                            <x-nav-link class="text-[#8B7FC0] hover:text-[#7868B6] hover:border-[#7868B6]" :href="route('offers')" :active="request()->routeIs('offers')">
+                            <x-guest-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                                 {{ __('Offers') }}
-                            </x-nav-link>
+                            </x-guest-nav-link>
                     
-                            <x-nav-link class="w-[110px] text-[#8B7FC0] hover:text-[#7868B6] hover:border-[#7868B6]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.applies')">
+                            <x-guest-nav-link :href="route('get.user.applies')" :active="request()->routeIs('get.user.applies')">
                                 {{ __('My Applies') }}
-                            </x-nav-link>
+                            </x-guest-nav-link>
                     
-                            <x-nav-link class="w-[100px] text-[#8B7FC0] hover:text-[#7868B6] hover:border-[#7868B6]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
+                            <x-guest-nav-link :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
                                 {{ __('Freelance') }}
-                            </x-nav-link>
+                            </x-guest-nav-link>
                     
                         </div>
                     </div>
