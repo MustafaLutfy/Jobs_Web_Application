@@ -1,8 +1,22 @@
+<div class="bg-[#8B7FC0] w-[25vw] h-[80vh] rounded-3xl absolute z-0 rounded-bl-none top-0 left-0"></div>
+<div class="bg-[#8B7FC0] w-[33vw] h-[70vh] absolute z-0 rounded-tl-3xl right-0 bottom-0"></div>
+
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
-    <form method="POST" action="{{ route('user.login') }}">
+    <div class="flex h-full items-center">
+        <div class="h-full flex flex-col justify-center items-center h-[50vh] w-[80vw]">
+            <h1 class="text-4xl font-bold text-[#7566B4]">
+                "Empower Your Career<br>
+                Apply Now and Transform<br>
+                Your Future!"
+            </h1>
+            <p class="text-lg">
+                Join thousands of people who’ve found their 
+                dream job <br> using Hired.
+            </p>
+        </div>
+    <form class="flex flex-col  justify-center px-[10%] w-full" method="POST" action="{{ route('user.login') }}">
         @csrf
 
         <!-- Email Address -->
@@ -44,4 +58,5 @@
             </x-primary-button>
         </div>
     </form>
+</div>
 </x-guest-layout>

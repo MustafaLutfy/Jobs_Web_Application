@@ -18,17 +18,16 @@
         <div class="flex items-center gap-10">
                     <!-- image -->
                     <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] p-1 mr-0">
-                        <img class="rounded-full" src="{{asset('users_images/1689303913.png')}}" alt="">
+                        <img class="rounded-full" src="{{asset('users_images/'.Auth::user()->profile_photo_path)}}" alt="">
                     </div>
 
                     <input
                     type="file"
+                    name="image"
                     class="block text-sm 
                         file:mr-4 file:py-2 file:px-4 file:rounded-md
                         file:border-0 file:text-sm file:font-semibold
-                        file:text-white
-                        file:bg-pink-50 file:bg-[#8A7BC8]
-                        hover:file:bg-[#8A7BC8]"
+                        file:text-white file:bg-[#8A7BC8] file:cursor-pointer"
                   />
                 <button class="text-[#8A7BC8] rounded-lg w-[15%] h-[38px] border-[2px] border-[#8A7BC8]">Delete</button>
         </div>

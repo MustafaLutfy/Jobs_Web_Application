@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\File; 
 
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
@@ -95,12 +96,27 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+       
+        if($request->image){
+            $imageName = time().'.'.$request->image->extension();  
+            $request->image->move(public_path('users_images'), $imageName);
+            $oldImage = Auth::user()->profile_photo_path;
+            File::delete(public_path("users_images/".$oldImage));
+            $user = User::where('id', Auth::user()->id)->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'phone' => $request->phone,
+                'profile_photo_path' => $imageName,
+            ]);
+
+        }
 
         $user = User::where('id', Auth::user()->id)->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone' => $request->phone,
         ]);
+     
 
         $request->user()->save();
 
