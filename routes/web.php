@@ -45,7 +45,7 @@ Route::prefix('company')->group(function () {
     Route::post('logout', [CompanyController::class, 'logout'])->name('company.logout');
 
    
-    Route::get('company/offer/create', [OffersController::class, 'create']);
+    Route::get('company/offer/create', [OffersController::class, 'create'])->name('offer.create.form');
     Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');

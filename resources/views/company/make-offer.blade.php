@@ -1,9 +1,11 @@
 
-
-<x-guest-layout>
     <!-- Session Status -->
+    @extends('layouts.company-layout')
+    @section('content')
     <x-auth-session-status class="mb-4" :status="session('status')" />
       
+      <div class="px-[20%] h-full flex items-center justify-center">
+
       
     <form method="POST" action="{{ route('create.offer') }}" enctype="multipart/form-data">
         @csrf
@@ -62,7 +64,7 @@
             </x-primary-button>
         </div>
     </form>
-        
+</div>
 
         <script>
 
@@ -253,10 +255,10 @@
 
 
 
-</x-guest-layout>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG_umtIa7hqoi4nKE4o2kvqVfZZim2YLs&libraries=places&callback=initAutocomplete&language=ar&region=IQ
 async defer"></script> 
+@endsection
