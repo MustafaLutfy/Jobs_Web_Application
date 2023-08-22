@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div class="flex bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
             <div class="py-4 text-gray-500 dark:text-gray-400">
@@ -86,7 +86,7 @@
                     </li>
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="cards.html">
+                            href="{{route('get.talents')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 16 16"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0a2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1s1-4 6-4s6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10Z"/></svg>
                             <span class="ml-4">Hire talents</span>
                         </a>
@@ -470,7 +470,7 @@
                                         </a>
                                     </li>
                                     <li class="flex">
-                                        <form method="POST" action="{{ route('company.logout') }}">
+                                        <form class="w-full" method="POST" action="{{ route('company.logout') }}">
                                         <button type="submit" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                             href="#">
                                             <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none"

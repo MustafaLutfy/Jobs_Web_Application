@@ -38,15 +38,15 @@ class ProfileController extends Controller
     
     }
 
-    public function profile(Request $request): View
+    public function profile(Request $request,$id): View
     {
         $skills = Skill::get('skill_title');
         $languages = Language::get('language');
-        $userSkills = UserSkill::where('user_id', Auth::user()->id)->get('skill_id');
-        $userEdus = Education::where('user_id', Auth::user()->id)->get();
-        $userExps = Experience::where('user_id', Auth::user()->id)->get();
-        $userLanguages = UserLanguage::where('user_id', Auth::user()->id)->get();
-        $user = User::find(Auth::user()->id);
+        $userSkills = UserSkill::where('user_id', $id)->get('skill_id');
+        $userEdus = Education::where('user_id', $id)->get();
+        $userExps = Experience::where('user_id', $id)->get();
+        $userLanguages = UserLanguage::where('user_id', $id)->get();
+        $user = User::find($id);
         $current = $user->job_searching == 1 ? 'checked' : '';
         
         return view('profile', [
@@ -58,6 +58,7 @@ class ProfileController extends Controller
             'current' => $current,
             'userSkills' => $userSkills,
             'userEdus' => $userEdus,
+            'user' => $user,
             'userLanguages' => $userLanguages,
     ]);
     }
