@@ -49,16 +49,16 @@
                         <div class="text-white mt-3 text-sm">
                             <div class="flex items-center mb-2">
                                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                                <p>{{Auth::user()->phone}}</p>
+                                <p>{{$user->phone}}</p>
                             </div>
                             <div class="flex items-center mb-2">
                                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 36 36"><path fill="currentColor" d="M32.33 6a2 2 0 0 0-.41 0h-28a2 2 0 0 0-.53.08l14.45 14.39Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="currentColor" d="m33.81 7.39l-14.56 14.5a2 2 0 0 1-2.82 0L2 7.5a2 2 0 0 0-.07.5v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-.12-.61ZM5.3 28H3.91v-1.43l7.27-7.21l1.41 1.41Zm26.61 0h-1.4l-7.29-7.23l1.41-1.41l7.27 7.21Z" class="clr-i-solid clr-i-solid-path-2"/><path fill="none" d="M0 0h36v36H0z"/></svg>
-                                <span class="text-xs">{{Auth::user()->email}}</span>
+                                <span class="text-xs">{{$user->email}}</span>
                             </div>
                             <div class="flex items-center mb-2">
                                 
                                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M256 32C167.67 32 96 96.51 96 176c0 128 160 304 160 304s160-176 160-304c0-79.49-71.67-144-160-144Zm0 224a64 64 0 1 1 64-64a64.07 64.07 0 0 1-64 64Z"/></svg>
-                                <span class="text-xs">{{Auth::user()->city}}</span>
+                                <span class="text-xs">{{$user->city}}</span>
                             </div>
                         </div>
                         
@@ -67,14 +67,14 @@
             <div class="bg-white col-span-2">
                 <div class="h-[20vh] mt-10 flex items-center w-full ">
                     <div class="h-[16vh] w-full bg-[#B497DD] flex flex-col justify-center px-8">
-                        <h1 class="text-2xl text-white font-semibold">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h1>
+                        <h1 class="text-2xl text-white font-semibold">{{$user->first_name}} {{$user->last_name}}</h1>
                         <h1 class="text-md text-white font-thin">Software Engineer</h1>
                     </div>
                 </div>
                 <div class="h-auto w-full px-8 mb-10">
                     <h1 class="text-xl text-gray-700 font-semibold mb-1">About Me</h1>
                     <div class="h-[2px] w-full bg-gray-700"></div>
-                    <p class="text-sm mt-2">{{Auth::user()->discription}}</p>
+                    <p class="text-sm mt-2">{{$user->discription}}</p>
                 </div>
 
 

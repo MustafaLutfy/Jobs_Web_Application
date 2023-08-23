@@ -49,6 +49,8 @@ Route::prefix('company')->group(function () {
     Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
+    Route::get('company/talents', [PagesController::class, 'getTalentsPage'])->name('get.talents');
+    Route::get('company/talent/cv/{id}', [PagesController::class, 'getTalentCv'])->name('get.talents.cv');
 
 /*------------End Company Routes---------------*/
 
@@ -75,11 +77,14 @@ Route::post('/offer/apply/{id}', [OffersController::class, 'Apply'])->middleware
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile.show');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/profile/searching', [ProfileController::class, 'isSearching'])->middleware(['auth', 'verified'])->name('is.searching');
 
 });
+
+// استثناء من المدل وير
+Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.show');
+
 
 require __DIR__.'/auth.php';
