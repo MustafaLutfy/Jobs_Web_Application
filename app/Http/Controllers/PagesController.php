@@ -10,12 +10,19 @@ use Auth;
 class PagesController extends Controller
 {
     public function getOffers(){
-        $job_titles = Job::get('job_title');
-        $offers = Offer::get();
-        return view('offers')->with([
-            'offers'=> $offers,
-            'job_titles'=> $job_titles,
-        ]);
+        if(Auth::user())
+        { $job_titles = Job::get('job_title');
+            $offers = Offer::get();
+            return view('offers')->with([
+                'offers'=> $offers,
+                'job_titles'=> $job_titles,
+            ]);
+        }
+
+        else{
+            return "error 404";
+        }
+       
     }
     public function getCompanyOffers(){
         $company_id = Auth::guard('company')->user()->id;
@@ -25,12 +32,18 @@ class PagesController extends Controller
         ]);
     }
     public function getApplies(){
-        $job_applies = Apply::where('user_id' , Auth::user()->id)->get();
-        $offers = Offer::get();
-        return view('applies')->with([
-            'job_applies'=> $job_applies,
-            'offers'=> $offers,
-        ]);
+        if(Auth::user())
+        { $job_applies = Apply::where('user_id' , Auth::user()->id)->get();
+            $offers = Offer::get();
+            return view('applies')->with([
+                'job_applies'=> $job_applies,
+                'offers'=> $offers,
+            ]); 
+        }
+        else{
+            return "error 404";
+        }
+        
     }
     
     public function getUserHome(){

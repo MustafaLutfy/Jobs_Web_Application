@@ -21,7 +21,6 @@
                     <x-nav-link class="w-[100px]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
                         {{ __('Freelance') }}
                     </x-nav-link>
-            
                 </div>
             </div>
 

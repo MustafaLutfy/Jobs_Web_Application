@@ -41,6 +41,13 @@
                                 {{ __('Freelance') }}
                             </x-nav-link>
                     
+                              <!-- <x-nav-link :href="route('user.register')" :active="request()->routeIs('get.user.applies')">
+                                {{ __('Sign up') }}
+                            </x-nav-link>
+                    
+                            <x-nav-link :href="route('user.login')" :active="request()->routeIs('get.user.freelance')">
+                                {{ __('Login') }}
+                            </x-nav-link>  -->
                         </div>
                     </div>
         
@@ -48,14 +55,14 @@
 
         
                     <!-- Hamburger -->
-                    <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- <div class="-mr-2 flex items-center ">
                         <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                 <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         
@@ -79,9 +86,16 @@
                 <div class="flex justify-center flex-col h-[100%] w-[60vw] p-40">
                     <!-- heading -->
                     <h1 class="text-[#7B6AB8] text-[40px] 2xl:text-[60px] font-bold">Connecting talents<br>with apportionities</h1>
+                   
                     <p class="mt-6 md:text-[18px]">Our platform was designed to connect talented indivisuals live you
                         with a vast array of job opening cross various indastries and sectors
                     </p>
+                    <!-- Auth -->
+                    <div class="mt-6 flex gap-10">
+                        <button class="border-[#7767b5] border-[3px] p-2 text-[#7767b5] rounded-md border-3 px-4"><a href="{{  route('company.register')  }}">I'm Hiring</a></button>
+                        <button class="bg-[#7767b5] p-2 text-white rounded-md border-3 px-4"><a href="{{ route('user.register') }}">I'm  A Talent </a></button>
+                    </div>
+                    <!-- end auth -->
                     <div>
                     <!-- job type button-->
                         <div class="flex mt-6 gap-10">

@@ -38,6 +38,7 @@
                             <x-guest-nav-link :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
                                 {{ __('Freelance') }}
                             </x-guest-nav-link>
+                
                     
                         </div>
                     </div>
