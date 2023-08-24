@@ -98,58 +98,21 @@
                         with a vast array of job opening cross various indastries and sectors
                     </p>
                     <!-- Auth -->
-                    <div class="mt-6 flex gap-10">
-                        <button class="border-[#7767b5] border-[3px] p-2 text-[#7767b5] rounded-md border-3 px-4"><a href="{{  route('company.register')  }}">I'm Hiring</a></button>
-                        <button class="bg-[#7767b5] p-2 text-white rounded-md border-3 px-4"><a href="{{ route('user.register') }}">I'm  A Talent </a></button>
+                    <div class="mt-6 flex gap-6">
+                        <a href="{{ route('user.register') }}" class="bg-[#7767b5] p-2 text-white rounded-md border-2 px-4">I'm  A Talent </a>
+                       <a href="{{  route('company.register')  }}" class="border-[#7767b5] border-[2px] p-2 text-[#7767b5] bg-transpernt rounded-md px-4">I'm Hiring</a>
                     </div>
                     <!-- end auth -->
                     <div>
                     <!-- job type button-->
                         <div class="flex mt-6 gap-10">
-                            <div class="inline-flex text-lg font-semibold items-center">
-                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="html"
-                                    data-ripple-dark="true">
-                                    <input id="html" name="type" type="radio"
-                                        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-[#b497dd] text-[#b497dd] transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-[#b497dd] checked:before:bg-[#b497dd] hover:before:opacity-10" />
-                                    <div
-                                        class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-[#b497dd] opacity-0 transition-opacity peer-checked:opacity-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
-                                            fill="currentColor">
-                                            <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
-                                        </svg>
-                                    </div>
-                                </label>
-                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="html">
-                                    Full Time
-                                </label>
-                            </div>
-                            <div class="inline-flex text-lg font-semibold items-center">
-                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="react"
-                                    data-ripple-dark="true">
-                                    <input id="react" name="type" type="radio"
-                                        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-[#b497dd] text-[#b497dd] transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-[#b497dd] before:opacity-0 before:transition-opacity checked:border-[#b497dd] checked:before:bg-[#b497dd] hover:before:opacity-10" />
-                                    <div
-                                        class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-[#b497dd] opacity-0 transition-opacity peer-checked:opacity-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 16 16"
-                                            fill="currentColor">
-                                            <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
-                                        </svg>
-                                    </div>
-                                </label>
-                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="react">
-                                    Part Time
-                                </label>
-                            </div>
+                           
+                        
                         </div>
         
                     </div>
                     <!-- search for job -->
-                    <div class="flex bg-white p-2 rounded-lg w-fit">
-                        <input
-                            class="focus:outline-none border-none focus:ring-white placeholder:text-lg focus:border-none w-[30vw] rounded-md "
-                            placeholder="Search for anything..." name="search" type="text">
-                        <button class="px-6 py-2 2xl:px-12 2xl:py-4 bg-[#7767b5] ml-auto text-[22px] text-white rounded-md">Search</button>
-                    </div>
+              
                 </div>
                 <!-- end search bar -->
         
