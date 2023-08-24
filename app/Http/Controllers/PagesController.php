@@ -17,20 +17,14 @@ use Auth;
 class PagesController extends Controller
 {
     public function getOffers(){
-        if(Auth::user())
-        { $job_titles = Job::get('job_title');
+         $job_titles = Job::get('job_title');
             $offers = Offer::get();
             return view('offers')->with([
                 'offers'=> $offers,
                 'job_titles'=> $job_titles,
             ]);
-        }
-
-        else{
-            return "error 404";
-        }
-       
     }
+    
     public function getCompanyOffers(){
         $company_id = Auth::guard('company')->user()->id;
         $offers = Offer::where('company_id', $company_id)->get();
