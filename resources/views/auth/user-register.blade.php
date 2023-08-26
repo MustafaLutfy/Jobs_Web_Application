@@ -20,11 +20,16 @@
             
         <form class="flex flex-col w-full h-full justify-between px-20" method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data">
             @csrf
-            <div>
-
+            <div class="flex items-end justify-between h-[10%]">
+                <div id='0' class="bg-gray-200 bg-gray-400 w-[16%] h-2 rounded step-ind"></div>
+                <div id='1' class="bg-gray-200 w-[16%] h-2 rounded step-ind"></div>
+                <div id='2' class="bg-gray-200 w-[16%] h-2 rounded step-ind"></div>
+                <div id='3' class="bg-gray-200 w-[16%] h-2 rounded step-ind"></div>
+                <div id='4' class="bg-gray-200 w-[16%] h-2 rounded step-ind"></div>
             </div>
 
             <!-- Name -->
+            
                             <div id="step-one" class="reg-step current">
 
                                 
@@ -70,7 +75,16 @@
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                 </div>
                             </div>
+
+
+                            
+
                             <div id="step-two"  class="hidden reg-step ">
+                                <div class="mb-4">
+                                    <x-input-label for="country" :value="__('Your Job Title (ex : Software Engineer)')" />
+                                    <x-text-input id="current_pos" class="block mt-1 w-full" type="text" name="current_pos" :value="old('current_pos')" required autofocus autocomplete="current_pos" />
+                                    <x-input-error :messages="$errors->get('current_pos')" class="mt-2" />
+                                </div>
                                 <div class="mb-4">
                                     <x-input-label for="country" :value="__('country')" />
                                     <x-text-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
@@ -87,7 +101,32 @@
                                     <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />
                                 </div>
                             </div>
+                           
                             <div id="step-three"  class="hidden reg-step ">
+                                <h3 class="text-center font-semibold text-gray-700 text-lg mb-8">Add Your Contact Ways</h3>
+                                <div class="mb-4">
+                                    <x-input-label for="phone" :value="__('Phone')" />
+                                    <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+                                    <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                                </div>
+                                <div class="mb-4">
+                                    <x-input-label for="contact_email" :value="__('Contact Email')" />
+                                    <x-text-input id="contact_email" class="block mt-1 w-full" type="text" name="contact_email" :value="old('contact_email')" required autofocus autocomplete="contact_email" />
+                                    <x-input-error :messages="$errors->get('contact_email')" class="mt-2" />
+                                </div>      
+                            
+                            </div>
+                            <div id="step-four"  class="hidden reg-step ">
+                        
+                                <div class="mb-4">
+                                    <x-input-label for="discription" :value="__('About You')" />
+                                    <x-textarea-input id="discription" class="block mt-1 max-h-[350px] min-h-[150px] w-full" type="text" name="discription" :value="old('discription')" required autofocus autocomplete="discription"> </x-textarea-input>
+                                    <x-input-error :messages="$errors->get('discription')" class="mt-2" />
+                                </div>      
+                            
+                            </div>
+
+                            <div id="step-five"  class="hidden reg-step ">
                                 <div class="flex items-center gap-10">
                                     <!-- image -->
                                     <div class=" border-dashed border-2 flex items-center justify-center border-gray-300 rounded-full w-[90px] h-[90px] p-1 mr-0">
@@ -106,7 +145,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-end items-center mb-10">
+                    <div class="flex justify-end items-center mb-10 mt-2">
                         <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             href="{{ route('user.login') }}">
                             {{ __('Already registered?') }}
@@ -125,13 +164,7 @@
                  </div>
                 </form>
 
-               
-            {{-- <div>
-            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" />
-            <x-input-error :messages="$errors->get('image')" class="mt-2" />
-        </div>  --}}
-
             
     
-    <script src="{{asset('js/changeStep.js')}}"></script>
+    <script src="{{asset('js/changeStepUser.js')}}"></script>
 </x-guest-layout>

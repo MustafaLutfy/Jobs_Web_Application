@@ -20,12 +20,12 @@ class LanguagesController extends Controller
                 'lang_id' => $langId,
                 'level' => $request->level,
             ]);
-        return view('profile.edit')->with('msg','Language Added');
+            return redirect()->back()->with('msg','Language Added');
        }
     }
 
     public function removeLanguage($id){
         UserLanguage::where('lang_id', $id)->delete();  
-        return view('profile.edit');
+        return redirect()->back();
     }
 }

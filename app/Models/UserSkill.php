@@ -15,7 +15,7 @@ class UserSkill extends Model
     ];
 
     
-    public function skill(): BelongsTo
+    public function skill()
     {
         return $this->belongsTo(Skill::class);
     }

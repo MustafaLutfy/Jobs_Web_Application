@@ -5,6 +5,7 @@ sideText = document.querySelector('#side-text');
 nextBtn = document.querySelector('#next-btn');
 submitBtn = document.querySelector('#submit-btn');
 prevBtn = document.querySelector('#prev-btn');
+stepIndicators = document.querySelectorAll('.step-ind');
 
 nextBtn.addEventListener("click", next);
 prevBtn.addEventListener("click", prev);
@@ -15,10 +16,11 @@ function next(){
     for (let index = 0; index < steps.length; index++) {
         if(index == 0 && steps[index].classList.contains('current')){
             prevBtn.classList.remove('hidden')
+            
         }
          if (index == steps.length-2 && steps[index].classList.contains('current')) {
             nextBtn.classList.add('hidden')
-            submitBtn.classList.remove('hidden')
+            submitBtn.classList.remove('hidden')     
             break;
         }
         
@@ -32,6 +34,8 @@ function next(){
             steps[index].classList.remove('current')
             steps[index+1].classList.remove('hidden')  
             steps[index+1].classList.add('current')
+            stepIndicators[index].classList.remove('bg-gray-400')
+            stepIndicators[index+1].classList.add('bg-gray-400')
             break;
         }
     } 
@@ -56,6 +60,8 @@ function prev(){
             steps[index].classList.remove('current')
             steps[index-1].classList.remove('hidden')  
             steps[index-1].classList.add('current')
+            stepIndicators[index].classList.remove('bg-gray-400')
+            stepIndicators[index-1].classList.add('bg-gray-400')
             break;
         }
     }

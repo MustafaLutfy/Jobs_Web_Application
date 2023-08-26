@@ -30,33 +30,36 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'first_name' => ['required', 'string', 'max:30'],
-        //     'last_name' => ['required', 'string', 'max:30'],
-        //     'phone' => ['required','numeric'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'country' => ['required', 'string', 'max:30'], 
-        //     'city' => ['required', 'string', 'max:30'],
-        //     'exp' => ['nullable', 'string', 'max:30'],
-        //     'birth_date' => ['required', 'date'],
-        //     'current_pos' => ['nullable', 'string'],
-        //     'job_searching' => ['nullable', 'boolean'],
-        //     'profile_photo_path' => ['nullable', 'string'],
-        //     'user_image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:30'],
+            'last_name' => ['required', 'string', 'max:30'],
+            'phone' => ['required','numeric'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'country' => ['required', 'string', 'max:30'], 
+            'city' => ['required', 'string', 'max:30'],
+            'exp' => ['nullable', 'string', 'max:30'],
+            'birth_date' => ['required', 'date'],
+            'current_pos' => ['nullable', 'string'],
+            'job_searching' => ['nullable', 'boolean'],
+            'profile_photo_path' => ['nullable', 'string'],
+            'user_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
 
-        // $imageName = time().'.'.$request->image->extension();  
-        // $request->image->move(public_path('users_images'), $imageName);
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('users_images'), $imageName);
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+            'contact_email' => $request->contact_email,
+            'discription' => $request->discription,
+            'current_pos' => $request->current_pos,
             'phone' => $request->phone,
             'country' => $request->country,
             'city' => $request->city,
             'exp' => $request->exp,
-            // 'profile_photo_path' => $imageName,
+            'profile_photo_path' => $imageName,
             'birth_date' => $request['birth_date'],
             'password' => Hash::make($request['password']),
             

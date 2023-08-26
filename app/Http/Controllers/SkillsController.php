@@ -17,7 +17,7 @@ class SkillsController extends Controller
       foreach($user_skills as $user_skill){
           if($user_skill->skill_id == $skillId){
             $checker = false;
-            return redirect('profile');
+            return redirect()->back();
             break;
           }
       }
@@ -28,11 +28,11 @@ class SkillsController extends Controller
                 'user_id'=> Auth::user()->id,
                 'skill_id' => $skillId,
             ]);
-        return redirect('profile')->with('msg','Skill Added');
+            return redirect()->back()->with('msg','Skill Added');
     }
     }
     public function removeSkill($id){
         UserSkill::where('skill_id', $id)->delete();  
-        return redirect('profile');
+        return redirect()->back();
     }
 }

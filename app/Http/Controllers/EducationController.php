@@ -16,12 +16,12 @@ class EducationController extends Controller
                 'from_date' => $request->from_date,
                 'to_date' => $request->to_date,
             ]);
-        return view('profile.edit')->with('msg','Education Added');
+        return redirect()->back();
     }
     }
 
     public function removeEducation($institution_name){
         Education::where('institution_name', $institution_name)->delete();  
-        return view('profile.edit');
+        return redirect()->back();
     }
 }

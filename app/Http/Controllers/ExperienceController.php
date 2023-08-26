@@ -16,14 +16,14 @@ class ExperienceController extends Controller
                 'from_date' => $request->from_date,
                 'to_date' => $request->to_date,
             ]);
-        return view('profile.edit')->with('msg','Education Added');
+            return redirect()->back()->with('msg','Education Added');
     }
     }
 
 
     public function removeExperience($org_name){
         Experience::where('org_name', $org_name)->delete();  
-        return view('profile.edit');
+        return redirect()->back();
 
 }
 }
