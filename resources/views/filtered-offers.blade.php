@@ -30,16 +30,17 @@
     </div>
   <div class="w-full flex justify-center items-center p-10">
     <div class="w-[80vw] gap-10 grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 items-center">
+
         @foreach ($offers as $offer)
        
         
-        <a href="{{url('offer/' . $offer->id)}} " class="mx-auto">
+        <a href="{{url('offer/' . $offer->offer->id)}} " class="mx-auto">
             <div 
                 class="group sm:w-[450px] w-[80vw] h-[250px] border flex items-start p-4 drop-shadow-md transition duration-300 hover:drop-shadow-lg  hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
                 <div class="flex flex-col h-full w-[100%]">
                     <div class="flex items-center mb-4 mt-4">
                         <img class="h-[60px] w-[60px] rounded-full p-2 ml-4 border-8 border-[#E9E6F3] transition duration-300 group-hover:border-[#9F94CB]"
-                        src="{{ $offer->company->cp_logo_path == 0 ? url('assets/sample.jpg') : url('users_images/' . $offer->company->cp_logo_path) }}"
+                        src="{{ $offer->offer->company->cp_logo_path == null ? url('assets/sample.jpg') : url('users_images/' . $offer->offer->company->cp_logo_path) }}"
                         alt="">
                         <div class="flex ml-auto">
                             <svg class="stroke-[#9F94CB] fill-white cursor-pointer transition-all duration-300 hover:fill-[#9F94CB]"
@@ -49,7 +50,7 @@
                             </svg>
                                 
                               
-                                    <button class="bg-[#9F94CB] text-white rounded-md w-full px-2 " href="{{route('job.apply', $offer->id)}}">Apply Now</button>
+                                    <button class="bg-[#9F94CB] text-white rounded-md w-full px-2 " href="{{route('job.apply', $offer->offer->id)}}">Apply Now</button>
                         </div>
                     </div>
                     
@@ -58,13 +59,13 @@
                         <div class="flex justify-between w-[100%]">
         
                             <h3 class="text-lg mx-4 font-bold overflow-hidden whitespace-nowrap">
-                                {{ $offer->job->job_title }}</h3>
+                                {{ $offer->offer->job->job_title }}</h3>
         
                         </div>
                         
                     </div>
                     <div class="flex ">
-                        <h3 class="text-md mx-4">{{ $offer->company->cp_name}}</h3>
+                        <h3 class="text-md mx-4">{{ $offer->offer->company->cp_name}}</h3>
                     </div>
                     <div class="px-3 flex rounded-md text-white mt-2">
                         <svg class="group-hover:fill-[#9F94CB] fill-gray-400" xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +73,7 @@
                             <path
                                 d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z" />
                         </svg>
-                        <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->company->city}}</span>
+                        <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->offer->company->city}}</span>
     
     
     
@@ -87,7 +88,7 @@
                                         clip-rule="evenodd" />
                                 </g>
                             </svg>
-                            <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->salary}}</span>
+                            <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->offer->salary}}</span>
                         </div>
                     </div>
         

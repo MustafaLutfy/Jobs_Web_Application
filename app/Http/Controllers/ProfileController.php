@@ -23,7 +23,6 @@ class ProfileController extends Controller
     public function isSearching(Request $request)
     {
 
-
         $user = User::find(Auth::user()->id);
 
         $current = $user->job_searching;
@@ -34,7 +33,7 @@ class ProfileController extends Controller
            
          }
 
-        return redirect('profile');
+        return redirect()->back();
     
     }
 

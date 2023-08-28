@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserSkill extends Model
+class OfferSkill extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'offer_id',
         'skill_id', 
     ];
 
@@ -19,13 +19,10 @@ class UserSkill extends Model
     {
         return $this->belongsTo(Skill::class);
     }
-    public function offers(): BelongsTo
+
+    public function offer()
     {
-        return $this->belongsToMany(Offer::class);
-    }
-    public function users(): BelongsTo
-    {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Offer::class);
     }
     
 }

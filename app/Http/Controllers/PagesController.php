@@ -17,11 +17,13 @@ use Auth;
 class PagesController extends Controller
 {
     public function getOffers(){
-         $job_titles = Job::get('job_title');
-            $offers = Offer::get();
+        $job_titles = Job::get('job_title');
+        $offers = Offer::get();
+        $skills = Skill::get();
             return view('offers')->with([
                 'offers'=> $offers,
                 'job_titles'=> $job_titles,
+                'skills'=> $skills,
             ]);
     }
     
@@ -60,13 +62,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function getOffer($id){
-        $offer = Offer::where('id', $id)->get()->first();
-        return view('offer-show')->with([
-            'offer'=> $offer,
-        ]);
-    }
-    
+   
     public function getTalentCv(Request $request,$id)
     {
         $skills = Skill::get('skill_title');
