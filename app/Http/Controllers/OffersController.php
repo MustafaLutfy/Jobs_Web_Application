@@ -94,6 +94,8 @@ class OffersController extends Controller
                 'job_id' => Job::where('job_title',$request->job_title)->value('id'),
                 'requirments' => $request->requirments,
                 'responsibilities' => $request->responsibilities,
+                'work_time' => $request->work_time,
+                'address' => $request->address,
                 'salary' => $salary,
             ]);
             
@@ -124,7 +126,13 @@ class OffersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $jobs = Job::get('job_title');
+        $offer = Offer::where('id', $id)->get()->first();
+        return view('company.edit-offer')->with([
+            'jobs' =>$jobs, 
+            'offer' =>$offer, 
+        ]);
+
     }
 
     /**
@@ -132,7 +140,23 @@ class OffersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $salary = $request->minSalary .'$-'.$request->maxSalary.'$';
+
+        if(Auth::guard('company')->check()){
+            $offer = Offer::where('id', $id)->update([
+                'requirments' => $request->requirments,
+                'responsibilities' => $request->responsibilities,
+                'work_time' => $request->work_time,
+                'salary' => $salary,
+            ]);
+            
+            return redirect('offer.skills.page');
+
+        }
+        else{
+            return redirect()->back()->with('msg','Pls loging first');
+        }
+       
     }
 
     /**

@@ -7,18 +7,19 @@
       <div class="px-[20%] h-full flex items-center justify-center">
 
       
-    <form method="POST" action="{{ route('create.offer') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('edit.offer', $offer->id) }}" enctype="multipart/form-data">
         @csrf
         <!-- requirments -->
         <div class="mb-4">
+            
             <x-input-label for="requirments" :value="__('Requirments')" />
-            <x-textarea-input id="requirments" class="block w-full max-h-[200px] border-2 border-gray-300 rounded-lg mt-1" type="text" name="requirments" :value="old('requirments')" required autofocus autocomplete="requirments" />
+            <textarea id="requirments" class="block w-full max-h-[200px] border-2 border-gray-300 border-gray-300 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] rounded-md shadow-sm rounded-lg mt-1" type="text" name="requirments" autofocus autocomplete="requirments">{{$offer->requirments}}</textarea> 
             <x-input-error :messages="$errors->get('requirments')" class="mt-2" />
         </div>
         <!-- responsibilities -->
         <div  class="mb-4">
             <x-input-label for="responsibilities" :value="__('Responsibilities')" />
-            <x-textarea-input id="responsibilities" class="block w-full max-h-[200px] border-2 border-gray-300 rounded-lg mt-1" type="text" name="responsibilities" :value="old('responsibilities')" required autofocus autocomplete="responsibilities" />
+            <textarea id="requirments" class="block w-full max-h-[200px] border-2 border-gray-300 border-gray-300 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] rounded-md shadow-sm rounded-lg mt-1" type="text" name="requirments" autofocus autocomplete="requirments">{{$offer->responsibilities}}</textarea> 
             <x-input-error :messages="$errors->get('responsibilities')" class="mt-2" />
         </div>
         <!-- salary -->
@@ -35,16 +36,16 @@
         <div class="flex gap-3 mb-4">
                      <div class="">
                      <x-input-label for="work_time" :value="__('Work Time')" class="mb-1" />
-                        <select name="work_time" id="work_time" class="p-2 rounded-md text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 border-gray-300 w-64">
+                        <select required name="work time" id="work_time" class="p-2 rounded-md text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 border-gray-300 w-64">
                             <option value="">Choose A Work time</option>
-                            <option value="FullTime">Full time</option>
-                            <option value="PartTime">Part time</option>
+                            <option value="full time">Full time</option>
+                            <option value="part time">Part time</option>
                         </select>
                      </div>
 
                  <div>
                     <x-input-label for="job_title" :value="__('Job Title')" class="mb-1"/>
-                    <select name="job_title" id="job_title" class="p-2 rounded-md border-gray-300 text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 w-64">
+                    <select required name="job_title" id="job_title" class="p-2 rounded-md border-gray-300 text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 w-64">
                         <option value="">Choose A Job Title</option>
                          @foreach ($jobs as $job)
                         <option value="{{$job->job_title}}">{{$job->job_title}}</option>
@@ -54,12 +55,7 @@
              
         </div>
         <!-- end worktime -->
-        <!-- Address -->
-        <div class="mb-2">
-            <x-input-label for="address" :value="__('Address')" />
-            <x-text-input id="pac-input" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
-            <x-input-error :messages="$errors->get('address')" class="mt-2" />
-        </div>
+
         
        
 

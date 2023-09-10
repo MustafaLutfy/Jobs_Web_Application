@@ -48,6 +48,8 @@ Route::prefix('company')->group(function () {
    
     Route::get('company/offer/create', [OffersController::class, 'create'])->name('offer.create.form');
     Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
+    Route::get('company/offer/edit/{id}', [OffersController::class, 'edit'])->name('edit.offer.form');
+    Route::post('company/offer/edit/{id}', [OffersController::class, 'update'])->name('edit.offer');
     Route::get('company/offer/skills/{id}', [OffersController::class, 'skills'])->name('offer.skills.page');
     Route::post('company/offer/skills/{id}', [SkillsController::class, 'addOfferSkill'])->name('add.offer.skill');
 
