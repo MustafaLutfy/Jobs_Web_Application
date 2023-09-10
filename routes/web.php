@@ -72,6 +72,7 @@ Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middlewa
 
 // شلت منه المدل وير لازم اضيف حماية انه الشركة متكدر تقدم
 Route::get('/offer/{id}', [OffersController::class, 'show'])->name('offer.show');
+// Route::delete('profile/skill/remove/{id}', [SkillsController::class, 'removeOfferSkill'])->name('offer.delete.skill');
 
 
 Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
@@ -80,6 +81,7 @@ Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.u
 Route::delete('/offer/remove/{id}', [OffersController::class, 'removeOffer'])->name('remove.offer');
 Route::get('/offer/apply/{id}', [OffersController::class, 'createApply'])->middleware(['auth', 'verified'])->name('get.job.apply');
 Route::post('/offer/apply/{id}', [OffersController::class, 'Apply'])->middleware(['auth', 'verified'])->name('job.apply');
+Route::delete('/skill/remove/{id}', [SkillsController::class, 'removeOfferSkill'])->name('remove.offer.skill');
 
 
 
@@ -93,7 +95,6 @@ Route::middleware('auth')->group(function () {
 
 // استثناء من المدل وير
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.show');
-Route::delete('profile/skill/remove/{id}', [SkillsController::class, 'removeOfferSkill'])->name('offer.skill.remove');
 
 
 require __DIR__.'/auth.php';

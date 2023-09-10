@@ -32,7 +32,7 @@
     <ul class="flex gap-2">
     @foreach ($offerSkills as $key => $offerSkill )
     <li>
-        <form method="post" action="{{ route('offer.skill.remove', $offerSkills[$key]->skill_id) }}" class="space-y-6">
+        <form method="post" action="{{ route('remove.offer.skill', $offerSkills[$key]->skill_id) }}" class="space-y-6">
             @csrf
             @method('delete')
             
