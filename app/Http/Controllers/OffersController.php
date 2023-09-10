@@ -113,6 +113,7 @@ class OffersController extends Controller
      */
     public function show(string $id)
     {
+<<<<<<< HEAD
         $offer = Offer::where('id', $id)->get()->first();
         $offer_skills = OfferSkill::where('offer_id', $id)->get();
         return view('offer-show')->with([
@@ -120,6 +121,16 @@ class OffersController extends Controller
             'offer_skills'=> $offer_skills,
         ]);
     }
+=======
+        $offer = Offer::where([ 'company_id' => Auth::guard('company')->id(),
+        'job_id' => Job::where('job_title',$request->job_title)->value('id'),
+        'requirments' => $request->requirments,
+        'responsibilities' => $request->responsibilities,
+        'salary' => $salary,
+    ]);
+       
+    } 
+>>>>>>> 5dbb83245be2473879bde58210c37829dde091d3
 
     /**
      * Show the form for editing the specified resource.

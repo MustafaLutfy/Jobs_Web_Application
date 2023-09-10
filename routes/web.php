@@ -57,6 +57,7 @@ Route::prefix('company')->group(function () {
     Route::get('company/talents', [PagesController::class, 'getTalentsPage'])->name('get.talents');
     Route::get('company/talent/cv/{id}', [PagesController::class, 'getTalentCv'])->name('get.talents.cv');
 
+
 /*------------End Company Routes---------------*/
 
 

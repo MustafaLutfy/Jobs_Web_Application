@@ -30,10 +30,12 @@ class PagesController extends Controller
     public function getCompanyOffers(){
         $company_id = Auth::guard('company')->user()->id;
         $offers = Offer::where('company_id', $company_id)->get();
-        return view('company-offers')->with([
+        return view('company/offers')->with([
             'offers'=> $offers,
         ]);
     }
+
+
     public function getTalentsPage(){
         $talents = User::where('job_searching', '1')->get();
         return view('company.hire-talent')->with([

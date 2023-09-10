@@ -1,22 +1,29 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-{{-- @if(Auth::user())
-<x-app-layout>
-@endif --}}
 
 @extends('layouts.company-layout')
 @section('content')
-    
-    <div class="w-full h-16 flex justify-center mt-16">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body  class=" overflow-x-hidden">
+    <!-- search bar -->
+<div class="w-full h-16 flex justify-center mt-16">
         <div class="w-[80%] bg-white h-full rounded-lg flex justify-between items-center p-3">
-            <form action="{{route('offers.skill.filter')}}" method="post">
-                @csrf
-                <select name='skill_id' onchange="this.form.submit()" id="underline_select" class="block w-[25vw] py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Find Jobs by skill</option>
-                    @foreach ($skills as $skill)
-                        <option value="{{$skill->id}}">{{$skill->skill_title}}</option>
-                    @endforeach
-                </select>
-            </form>
+            
+            <select id="underline_select" class="block w-[25vw] py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option selected>Choose a country</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+            </select>
+
             <select id="underline_select" class="block w-[25vw] py-2.5 px-0 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 <option selected>Order by</option>
                 <option value="US">Work Time</option>
@@ -28,7 +35,7 @@
         </div>
             <!--end search bar-->
     </div>
-  <div class="w-full flex justify-center items-center p-10">
+  <div class="w-96 grid h-full p-10">
     <div class="w-[80vw] gap-10 grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 items-center">
         @foreach ($offers as $offer)
        
@@ -66,10 +73,7 @@
                         </div>
                         
                     </div>
-                    <!-- *********************************** -->
-                    <div class="flex">
-                        <h3 class="text-md mx-4">{{ $offer->company->cp_name}}</h3>
-                    </div>
+                   
                     <div class="px-3 flex rounded-md text-white mt-2">
                         <svg class="group-hover:fill-[#9F94CB] fill-gray-400" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24">
@@ -77,7 +81,6 @@
                                 d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z" />
                         </svg>
                         <span class="text-gray-400 group-hover:text-[#9F94CB] ml-1">{{$offer->company->city}}</span>
-                    <!-- ****************************************** -->
     
                         <!-- salary -->
                         <div class="ml-4 flex rounded-md text-white">
@@ -109,8 +112,8 @@
         @endforeach
     <div>
   </div>
-  @endsection
 
-  {{-- @if(Auth::user())
-</x-app-layout>
-  @endif --}}
+</body>
+</html>
+
+@endsection

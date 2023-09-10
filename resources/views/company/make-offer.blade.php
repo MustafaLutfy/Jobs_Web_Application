@@ -4,7 +4,7 @@
     @section('content')
     <x-auth-session-status class="mb-4" :status="session('status')" />
       
-      <div class="px-[20%] h-full flex items-center justify-center">
+      <div class="px-[20%] mt-16 h-full flex items-center justify-center">
 
       
     <form method="POST" action="{{ route('create.offer') }}" enctype="multipart/form-data">
