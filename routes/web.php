@@ -54,7 +54,9 @@ Route::prefix('company')->group(function () {
     Route::post('company/offer/skills/{id}', [SkillsController::class, 'addOfferSkill'])->name('add.offer.skill');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
+    Route::get('company/settings', [CompanyController::class, 'settings'])->name('company.settings');
     Route::get('company/talents', [PagesController::class, 'getTalentsPage'])->name('get.talents');
+    Route::get('company/{id}', [CompanyController::class, 'profile'])->name('company.profile');
     Route::get('company/talent/cv/{id}', [PagesController::class, 'getTalentCv'])->name('get.talents.cv');
 
 
@@ -65,7 +67,15 @@ Route::prefix('company')->group(function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    if(!Auth::user()){
+        return view('welcome');
+    }
+    elseif(Auth::guard('company')->check()){
+        return redirect(route('company.dashboard'));
+    }
+    else{
+        return redirect(route('dashboard'));
+    }
 })->name('home');
 
 

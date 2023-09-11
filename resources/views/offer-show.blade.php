@@ -175,7 +175,6 @@
                 </div>
             </div>
 
-
             <div class="mt-16">
                 <h2 class="text-xl mb-6 text-gray-600 font-semibold">Included skills</h2>
                 <ul class="flex gap-4">

@@ -15,6 +15,18 @@ use App\Providers\RouteServiceProvider;
 class CompanyController extends Controller
 {
    
+    public function profile($id){
+        $company = Company::where('id', $id)->get()->first();
+        return view('company.profile', ['id' => $id])->with([
+            'company' => $company,
+        ]);
+    }
+    public function settings(){
+        $company = Company::where('id', $id)->get()->first();
+        return view('company.profile', ['id' => $id])->with([
+            'company' => $company,
+        ]);
+    }
 
     public function login(Request $request)
     {

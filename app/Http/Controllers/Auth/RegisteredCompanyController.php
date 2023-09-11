@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class RegisteredCompanyController extends Controller
 {
@@ -53,7 +54,6 @@ class RegisteredCompanyController extends Controller
 
         $imageName = time().'.'.$request->image->extension();  
         $request->image->move(public_path('users_images'), $imageName);
-
         $company = Company::create([
             'cp_name' => $request->cp_name,
             'cp_email' => $request->cp_email,
@@ -63,7 +63,8 @@ class RegisteredCompanyController extends Controller
             'Address' => $request->address,
             'zip_code' => $request->zip_code,
             'cp_logo_path' => $imageName,
-            'establishing_date' => $request->establishing_date,
+            'establishing_date' => Carbon::parse($request->establishing_date),
+            'employees_number' => $request->employees_number,
             'password' => Hash::make($request['password']),
             'description' => $request->description,
             'website' => $request->website,
