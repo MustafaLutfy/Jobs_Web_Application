@@ -9,6 +9,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
+use App\Http\Controllers\Auth\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,10 @@ Route::prefix('company')->group(function () {
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
     Route::get('company/settings', [CompanyController::class, 'settings'])->name('company.settings');
+    Route::patch('company/update/details', [CompanyController::class, 'detailsUpdate'])->name('company.update.details');
+    Route::patch('company/update/location', [CompanyController::class, 'locationUpdate'])->name('company.update.location');
+    Route::patch('company/update/about', [CompanyController::class, 'aboutUpdate'])->name('company.update.about');
+    Route::put('company/password', [PasswordController::class, 'companyUpdate'])->name('company.password.update');
     Route::get('company/talents', [PagesController::class, 'getTalentsPage'])->name('get.talents');
     Route::get('company/{id}', [CompanyController::class, 'profile'])->name('company.profile');
     Route::get('company/talent/cv/{id}', [PagesController::class, 'getTalentCv'])->name('get.talents.cv');

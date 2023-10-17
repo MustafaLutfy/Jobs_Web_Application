@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-[#8A7BC8]">
-            {{ __('Personal Information') }}
+            {{ __('Company Information') }}
         </h2>
 
     
@@ -11,14 +11,14 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('company.update.details') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
         <div class="flex items-center gap-10">
                     <!-- image -->
                     <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] p-1 mr-0">
-                        <img class="rounded-full" src="{{asset('users_images/'.Auth::user()->profile_photo_path)}}" alt="">
+                        <img class="rounded-full" src="{{asset('users_images/'.Auth::guard('company')->user()->cp_logo_path)}}" alt="">
                     </div>
 
                     <input
@@ -33,44 +33,39 @@
         </div>
         <div class="flex w-[90%]">
                 <div>
-                    <x-input-label class="text-[#8A7BC8]" for="name" :value="__('Fist Name')" />
-                    <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full" :value="old('first_name', $user->first_name)" autofocus autocomplete="first_name" />
-                    <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+                    <x-input-label class="text-[#8A7BC8]" for="cp_name" :value="__('Company Name')" />
+                    <x-text-input id="cp_name" name="cp_name" type="text" class="mt-1 block w-full" :value="old('cp_name', $company->cp_name)" autofocus autocomplete="cp_name" />
+                    <x-input-error class="mt-2" :messages="$errors->get('cp_name')" />
                 </div>
-                <div class="ml-auto">
-                    <x-input-label class="text-[#8A7BC8]" for="last_name" :value="__('Last Name')" />
-                    <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full" :value="old('last_name', $user->last_name)" autofocus autocomplete="last_name" />
-                    <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
-                </div>  
+                <div class="ml-4 w-[50%]">
+                    <x-input-label  for="employees_number" :value="__('Employees Number')" />
+                    <select class="border-gray-300 p-2 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] rounded-md shadow-sm w-full" name="employees_number" >
+                        <option value="default">{{Auth::guard('company')->user()->employees_number}}</option>
+                        <option value="1-5">1-5</option>
+                        <option value="5-20">5-20</option>
+                        <option value="20-100">20-100</option>
+                        <option value="100-1000">100-1000</option>
+                        <option value="1000+">1000+</option>
+                    </select>
+                    <x-input-error :messages="$errors->get('employees_number')" class="mt-2" />
+                </div>
         </div>
         <div >
-            <x-input-label class="text-[#8A7BC8]" for="phone" :value="__('Phone Number')" />
-            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-[90%]" :value="old('phone', $user->phone)" autofocus autocomplete="phone" />
-            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+            <x-input-label class="text-[#8A7BC8]" for="cp_phone" :value="__('Phone Number')" />
+            <x-text-input id="cp_phone" name="cp_phone" type="text" class="mt-1 block w-[90%]" :value="old('cp_phone', $company->cp_phone)" autofocus autocomplete="cp_phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('cp_phone')" />
         </div>  
-        <div>
-            <x-input-label class="text-[#8A7BC8]" for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-[90%]" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+        <div >
+            <x-input-label class="text-[#8A7BC8]" for="cp_email" :value="__('Email')" />
+            <x-text-input id="cp_email" name="cp_email" type="text" class="mt-1 block w-[90%]" :value="old('cp_email', $company->cp_email)" autofocus autocomplete="cp_email" />
+            <x-input-error class="mt-2" :messages="$errors->get('cp_email')" />
+        </div>  
+        <div >
+            <x-input-label class="text-[#8A7BC8]" for="website" :value="__('Website')" />
+            <x-text-input id="website" name="website" type="text" class="mt-1 block w-[90%]" :value="old('website', $company->website)" autofocus autocomplete="website" />
+            <x-input-error class="mt-2" :messages="$errors->get('website')" />
+        </div>  
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Your email address is unverified.') }}
-
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
-
-                    @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
-                            {{ __('A new verification link has been sent to your email address.') }}
-                        </p>
-                    @endif
-                </div>
-            @endif
-        </div>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

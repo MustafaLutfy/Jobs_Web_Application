@@ -113,13 +113,12 @@ class OffersController extends Controller
      */
     public function show(string $id)
     {
-        $offer = Offer::where([ 'company_id' => Auth::guard('company')->id(),
-        'job_id' => Job::where('job_title',$request->job_title)->value('id'),
-        'requirments' => $request->requirments,
-        'responsibilities' => $request->responsibilities,
-        'salary' => $salary,
-    ]);
-       
+        $offerSkills = OfferSkill::where('offer_id',$id)->get();
+        $offer =  Offer::where('id', $id)->get()->first();
+        return view('offer-show')->with([
+            'offer' => $offer,
+            'offer_skills' => $offerSkills,
+        ]); 
     } 
 
     /**

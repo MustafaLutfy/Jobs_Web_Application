@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('country');
             $table->string('city');
-            $table->string('Address');
+            $table->string('address');
             $table->string('zip_code');
             $table->string('description');
             $table->string('website');
