@@ -55,6 +55,7 @@ Route::prefix('company')->group(function () {
     Route::post('company/offer/skills/{id}', [SkillsController::class, 'addOfferSkill'])->name('add.offer.skill');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
+    Route::get('company/chat', [CompanyController::class, 'getChat'])->name('get.chat');
     Route::get('company/settings', [CompanyController::class, 'settings'])->name('company.settings');
     Route::patch('company/update/details', [CompanyController::class, 'detailsUpdate'])->name('company.update.details');
     Route::patch('company/update/location', [CompanyController::class, 'locationUpdate'])->name('company.update.location');

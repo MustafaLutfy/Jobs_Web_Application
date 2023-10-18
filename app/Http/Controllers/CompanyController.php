@@ -29,6 +29,9 @@ class CompanyController extends Controller
             'company' => $company,
         ]);
     }
+    public function getChat(){
+        return view('company.chat');
+    }
 
     public function detailsUpdate(Request $request)
     {

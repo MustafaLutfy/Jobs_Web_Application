@@ -69,11 +69,22 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 3H8a2 2 0 0 0-2 2v16l6-3l6 3V5a2 2 0 0 0-2-2Z" />
                             </svg>
+                            @if($job_apply->status == 'Accepted')
                             <span
-                            class="flex items-center px-3 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-md dark:bg-green-700 dark:text-green-100"
-                          >
-                            Approved
+                            class="flex items-center px-3 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-md dark:bg-green-700 dark:text-green-100">
+                            {{$job_apply->status}}
                           </span>
+                            @elseif($job_apply->status == 'Declined')
+                            <span
+                            class="flex items-center px-3 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-md dark:bg-green-700 dark:text-green-100">
+                            {{$job_apply->status}}
+                            </span>
+                            @else
+                            <span
+                            class="flex items-center px-3 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-md dark:bg-green-700 dark:text-green-100">
+                            {{$job_apply->status}}
+                            </span>
+                            @endif
                         </div>
                     </div>
                 </div>
