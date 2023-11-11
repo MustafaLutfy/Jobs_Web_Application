@@ -22,6 +22,13 @@ class CompanyController extends Controller
             'company' => $company,
         ]);
     }
+
+    public function showProfileForUser($id){
+        $company = Company::where('id', $id)->get()->first();
+        return view('company-profile', ['id' => $id])->with([
+            'company' => $company,
+        ]);
+    }
     public function settings(){
         $id = Auth::guard('company')->user()->id;
         $company = Company::where('id', $id)->get()->first();
@@ -29,9 +36,7 @@ class CompanyController extends Controller
             'company' => $company,
         ]);
     }
-    public function getChat(){
-        return view('company.chat');
-    }
+
 
     public function detailsUpdate(Request $request)
     {
@@ -69,14 +74,8 @@ class CompanyController extends Controller
             'cp_name' => $request->cp_name,
             'cp_email' => $request->cp_email,
             'cp_phone' => $request->cp_phone,
-            // 'country' => $request->country,
-            // 'city' => $request->city,
-            // 'address' => $request->address,
-            // 'zip_code' => $request->zip_code,
-            // 'description' => $request->description,
             'website' => $request->website,
             'employees_number' => $employees_number,
-            // 'establishing_date' => Carbon::parse($request->establishing_date),
         ]);
      
 

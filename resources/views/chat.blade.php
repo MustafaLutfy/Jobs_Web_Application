@@ -1,11 +1,11 @@
-@extends('layouts.company-layout')
-@section('content')
+<x-app-layout>
+
 
 <script src="{{asset('js/tailwind.js')}}"></script>
 
-  <body>
-    <div class="container my-auto mx-auto flex items-center">
-      <div class="min-w-full border rounded lg:grid lg:grid-cols-3 h-[80vh]">
+  <body class="flex ">
+    <div class="container my-auto mx-auto flex h-[calc(100vh-100px)]  items-center">
+      <div class="min-w-full border rounded lg:grid lg:grid-cols-3 bg-white h-[80vh]">
         <div class="border-r border-gray-300 lg:col-span-1">
           <div class="mx-3 my-3 ">
             <div class="relative text-gray-600">
@@ -25,13 +25,13 @@
             @foreach ($contacts as $contact)
               <li>
                 <a
-                  href="{{route('get.chat', $contact->user_id)}}"
+                  href="{{route('user.get.chat', $contact->company_id)}}"
                   class="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
                   <img class="object-cover w-10 h-10 rounded-full"
                     src="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg" alt="username" />
                   <div class="w-full pb-2">
                     <div class="flex justify-between">
-                      <span class="block ml-2 font-semibold text-gray-600">{{$contact->user->first_name}} {{$contact->user->last_name}}</span>
+                      <span class="block ml-2 font-semibold text-gray-600">{{$contact->company->cp_name}}</span>
                       <span class="block ml-2 text-sm text-gray-600">{{ Carbon\Carbon::parse($contact->created_at)->ago()}}</span>
                     </div>
                     <span class="block ml-2 text-sm text-gray-600">{{$contact->message}}</span>
@@ -46,17 +46,15 @@
         <div class="hidden lg:col-span-2 lg:block ">
           <div class="w-full">
             <div class="relative flex items-center p-3 border-b border-gray-300 ">
-              @if($user->id > 0)
               <img class="object-cover w-10 h-10 rounded-full"
                 src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
-              @endif
-              <span class="block ml-2 font-bold text-gray-600">{{$user->first_name}} {{$user->last_name}}</span>
+              <span class="block ml-2 font-bold text-gray-600">{{$company->cp_name}}</span>
               </span>
             </div>
             <div class="relative w-full p-6 overflow-y-auto h-[calc(80vh-133px)]">
               <ul class="space-y-2">
                 @foreach ($messages as $message)
-                @if($message->message_by == 'company')
+                @if($message->message_by == 'user')
                     <li class="group flex justify-end items-center">
                       <form method="POST" action="{{ route('message.delete', $message->id) }}">
                         @method('DELETE')
@@ -85,7 +83,7 @@
                 </li> --}}
               </ul>
             </div>
-            <form method="POST" action="{{ route('message.send', $user->id) }}">
+            <form method="POST" action="{{ route('message.send', $company->id) }}">
                 @csrf
             <div class="flex items-center justify-between w-full p-3 border-t border-gray-300 ">
               <button>
@@ -117,4 +115,5 @@
   </body>
 
 </html>
-@endsection
+</x-app-layout>
+

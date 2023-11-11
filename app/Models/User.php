@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Skill::class);
     }
     
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 
     protected $fillable = [
         'first_name',

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
@@ -55,7 +56,8 @@ Route::prefix('company')->group(function () {
     Route::post('company/offer/skills/{id}', [SkillsController::class, 'addOfferSkill'])->name('add.offer.skill');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
-    Route::get('company/chat', [CompanyController::class, 'getChat'])->name('get.chat');
+    Route::get('company/chat/{id}', [ChatController::class, 'getChat'])->name('get.chat');
+    Route::get('company/chat', [ChatController::class, 'getChatsPage'])->name('get.chats.page');
     Route::get('company/settings', [CompanyController::class, 'settings'])->name('company.settings');
     Route::patch('company/update/details', [CompanyController::class, 'detailsUpdate'])->name('company.update.details');
     Route::patch('company/update/location', [CompanyController::class, 'locationUpdate'])->name('company.update.location');
@@ -114,6 +116,21 @@ Route::middleware('auth')->group(function () {
 
 // استثناء من المدل وير
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile.show');
+
+
+
+Route::get('user/chat/{id}', [ChatController::class, 'getUserChat'])->name('user.get.chat');
+
+Route::get('company/show/{id}', [CompanyController::class, 'showProfileForUser'])->name('cp.profile.show');
+
+
+Route::post('/user/chat/{id}', [ChatController::class, 'addMessage'])->name('message.send');
+
+
+Route::post('/company/chat/{id}', [ChatController::class, 'addMessage'])->name('message.send');
+Route::delete('/company/chat/delete/{id}', [ChatController::class, 'messageDelete'])->name('message.delete');
+
+
 
 
 require __DIR__.'/auth.php';

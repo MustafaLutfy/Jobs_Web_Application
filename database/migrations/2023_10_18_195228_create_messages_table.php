@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->unsignedBigInteger('job_id');
-            $table->longText('requirments');
-            $table->longText('responsibilities');
-            $table->string('salary')->nullable();
-            $table->enum('work_time', ['FullTime', 'PartTime'])->nullable();
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->longText('message');
+            $table->boolean('seen')->nullable();
+            $table->string('message_by');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_job_offers');
+        Schema::dropIfExists('messages');
     }
 };
