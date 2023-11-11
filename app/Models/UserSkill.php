@@ -19,7 +19,7 @@ class UserSkill extends Model
     {
         return $this->belongsTo(Skill::class);
     }
-    public function offer(): BelongsTo
+    public function offers(): BelongsTo
     {
         return $this->belongsToMany(Offer::class);
     }

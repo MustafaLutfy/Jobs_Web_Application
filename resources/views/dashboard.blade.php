@@ -1,6 +1,5 @@
+
 <x-app-layout>
-
-
     <div class="flex items-center  h-[90vh] bg-[#F7F7F8]">
 
         <div class="flex justify-center flex-col h-[100%] w-[60vw] p-40">

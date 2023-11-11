@@ -1,4 +1,3 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 @extends('layouts.company-layout')
 @section('content')
@@ -36,7 +35,7 @@
             <!--end search bar-->
     </div>
   <div class="w-96 grid h-full p-10">
-    <div class="w-[80vw] gap-10 grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 items-center">
+    <div class="w-[80vw] gap-10 grid md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         @foreach ($offers as $offer)
        
         

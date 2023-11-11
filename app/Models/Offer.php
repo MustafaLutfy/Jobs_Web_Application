@@ -29,6 +29,10 @@ class Offer extends Model
    {
        return $this->hasMany(Apply::class);
    }
+   public function offerSkills(): HasMany
+   {
+       return $this->hasMany(OfferSkill::class);
+   }
    
 
    protected $fillable = [
@@ -38,6 +42,6 @@ class Offer extends Model
             'requirments', 
             'responsibilities',
             'salary',
-        //  'work_time'
+            'work_time'
    ];
 }

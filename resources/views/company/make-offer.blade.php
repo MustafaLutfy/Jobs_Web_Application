@@ -35,10 +35,10 @@
         <div class="flex gap-3 mb-4">
                      <div class="">
                      <x-input-label for="work_time" :value="__('Work Time')" class="mb-1" />
-                        <select name="work time" id="work_time" class="p-2 rounded-md text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 border-gray-300 w-64">
+                        <select name="work_time" id="work_time" class="p-2 rounded-md text-gray-400 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] focus:text-gray-700 border-gray-300 w-64">
                             <option value="">Choose A Work time</option>
-                            <option value="full time">Full time</option>
-                            <option value="part time">Part time</option>
+                            <option value="FullTime">Full time</option>
+                            <option value="PartTime">Part time</option>
                         </select>
                      </div>
 

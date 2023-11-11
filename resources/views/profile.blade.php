@@ -10,11 +10,17 @@
     }
 </style> 
 <!-- edit profile -->
+<<<<<<< HEAD
 
             <a  class="bg-[#B497DD] rounded-full p-6 absolute -bottom-14 right-4 text-white" href="{{url('/profile/edit')}}" class="text-white ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.363 5.652l1.48-1.48a2 2 0 0 1 2.829 0l1.414 1.414a2 2 0 0 1 0 2.828l-1.48 1.48m-4.243-4.242l-9.616 9.615a2 2 0 0 0-.578 1.238l-.242 2.74a1 1 0 0 0 1.084 1.085l2.74-.242a2 2 0 0 0 1.24-.578l9.615-9.616m-4.243-4.242l4.243 4.242"/></svg>
             </a>
     
+=======
+            <a href="{{url('/profile/edit')}}" class="text-white bg-[#B497DD] rounded-full p-6 absolute -bottom-14 right-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14.363 5.652l1.48-1.48a2 2 0 0 1 2.829 0l1.414 1.414a2 2 0 0 1 0 2.828l-1.48 1.48m-4.243-4.242l-9.616 9.615a2 2 0 0 0-.578 1.238l-.242 2.74a1 1 0 0 0 1.084 1.085l2.74-.242a2 2 0 0 0 1.24-.578l9.615-9.616m-4.243-4.242l4.243 4.242"/></svg>
+            </a>
+>>>>>>> a70bb7ce02f03b31f7515709d32f53afd9e21289
 <x-app-layout>
 
     <div class="h-full w-full p-4 flex justify-center items-center">
@@ -56,7 +62,6 @@
                                 <span class="text-xs">{{$user->email}}</span>
                             </div>
                             <div class="flex items-center mb-2">
-                                
                                 <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path fill="currentColor" d="M256 32C167.67 32 96 96.51 96 176c0 128 160 304 160 304s160-176 160-304c0-79.49-71.67-144-160-144Zm0 224a64 64 0 1 1 64-64a64.07 64.07 0 0 1-64 64Z"/></svg>
                                 <span class="text-xs">{{$user->city}}</span>
                             </div>

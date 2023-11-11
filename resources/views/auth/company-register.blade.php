@@ -111,17 +111,28 @@
                                     <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="old('website')" required autofocus autocomplete="website" />
                                     <x-input-error :messages="$errors->get('website')" class="mt-2" />
                                 </div>
-                                <div>
+                                <div class="mt-3">
                                     <x-input-label for="establishing_date" :value="__('establishing_date')" />
                                     <x-text-input id="establishing_date" class="block mt-1 w-full" type="date" name="establishing_date" :value="old('establishing_date')" required autofocus autocomplete="establishing_date" />
+                                    <x-input-error :messages="$errors->get('establishing_date')" class="mt-2" />
+                                </div>
+                                <div class="mt-3">
+                                    <x-input-label  for="employees_number" :value="__('Employees Number')" />
+                                    <select class="border-gray-300 focus:border-[#8A7BC8] focus:ring-[#8A7BC8] rounded-md shadow-sm w-full" name="employees_number" >
+                                        <option value="1-5">1-5</option>
+                                        <option value="5-20">5-20</option>
+                                        <option value="20-100">20-100</option>
+                                        <option value="100-1000">100-1000</option>
+                                        <option value="1000+">1000+</option>
+                                    </select>
                                     <x-input-error :messages="$errors->get('establishing_date')" class="mt-2" />
                                 </div>
                             </div>
                             <div id="step-four"  class="hidden reg-step ">
                                 <div class="mb-4">
-                                    <x-input-label for="discription" :value="__('About You')" />
-                                    <x-textarea-input id="discription" class="block mt-1 max-h-[350px] min-h-[150px] w-full" type="text" name="discription" :value="old('discription')" required autofocus autocomplete="discription"> </x-textarea-input>
-                                    <x-input-error :messages="$errors->get('discription')" class="mt-2" />
+                                    <x-input-label for="description" :value="__('About You')" />
+                                    <x-textarea-input id="description" class="block mt-1 max-h-[350px] min-h-[150px] w-full" type="text" name="description" :value="old('discription')" required autofocus autocomplete="discription"> </x-textarea-input>
+                                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
                                 </div>      
                             
                             </div>

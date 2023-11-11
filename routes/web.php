@@ -4,10 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
+use App\Http\Controllers\Auth\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +49,20 @@ Route::prefix('company')->group(function () {
    
     Route::get('company/offer/create', [OffersController::class, 'create'])->name('offer.create.form');
     Route::post('company/offer/create', [OffersController::class, 'store'])->name('create.offer');
+    Route::get('company/offer/edit/{id}', [OffersController::class, 'edit'])->name('edit.offer.form');
+    Route::post('company/offer/edit/{id}', [OffersController::class, 'update'])->name('edit.offer');
+    Route::get('company/offer/skills/{id}', [OffersController::class, 'skills'])->name('offer.skills.page');
+    Route::post('company/offer/skills/{id}', [SkillsController::class, 'addOfferSkill'])->name('add.offer.skill');
 
     Route::get('company/myoffers', [PagesController::class, 'getCompanyOffers'])->name('get.company.offers');
+    Route::get('company/chat', [CompanyController::class, 'getChat'])->name('get.chat');
+    Route::get('company/settings', [CompanyController::class, 'settings'])->name('company.settings');
+    Route::patch('company/update/details', [CompanyController::class, 'detailsUpdate'])->name('company.update.details');
+    Route::patch('company/update/location', [CompanyController::class, 'locationUpdate'])->name('company.update.location');
+    Route::patch('company/update/about', [CompanyController::class, 'aboutUpdate'])->name('company.update.about');
+    Route::put('company/password', [PasswordController::class, 'companyUpdate'])->name('company.password.update');
     Route::get('company/talents', [PagesController::class, 'getTalentsPage'])->name('get.talents');
+    Route::get('company/{id}', [CompanyController::class, 'profile'])->name('company.profile');
     Route::get('company/talent/cv/{id}', [PagesController::class, 'getTalentCv'])->name('get.talents.cv');
 
 
@@ -60,19 +73,34 @@ Route::prefix('company')->group(function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    if(!Auth::user()){
+        return view('welcome');
+    }
+    elseif(Auth::guard('company')->check()){
+        return redirect(route('company.dashboard'));
+    }
+    else{
+        return redirect(route('dashboard'));
+    }
 })->name('home');
 
 
 
 Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/offer/{id}', [PagesController::class, 'getOffer'])->middleware(['auth', 'verified'])->name('offer.show');
+
+
+// شلت منه المدل وير لازم اضيف حماية انه الشركة متكدر تقدم
+Route::get('/offer/{id}', [OffersController::class, 'show'])->name('offer.show');
+// Route::delete('profile/skill/remove/{id}', [SkillsController::class, 'removeOfferSkill'])->name('offer.delete.skill');
+
 
 Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
+Route::post('/offers/fillters/skill', [OffersController::class, 'skillFilter'])->name('offers.skill.filter');
 Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.user.applies');
 Route::delete('/offer/remove/{id}', [OffersController::class, 'removeOffer'])->name('remove.offer');
 Route::get('/offer/apply/{id}', [OffersController::class, 'createApply'])->middleware(['auth', 'verified'])->name('get.job.apply');
 Route::post('/offer/apply/{id}', [OffersController::class, 'Apply'])->middleware(['auth', 'verified'])->name('job.apply');
+Route::delete('/skill/remove/{id}', [SkillsController::class, 'removeOfferSkill'])->name('remove.offer.skill');
 
 
 

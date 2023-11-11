@@ -8,6 +8,8 @@ use App\Models\Job;
 use App\Models\Offer;
 use App\Models\UserOffer;
 use App\Models\Apply;
+use App\Models\OfferSkill;
+use App\Models\Skill;
 
 class OffersController extends Controller
 {
@@ -22,6 +24,20 @@ class OffersController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function skills($id)
+    {
+        $offer = Offer::where('id', $id)->get()->first();
+        $skills = Skill::get();
+        $offerSkills = OfferSkill::where('offer_id',$id)->get();
+    
+        return view('add-offer-skills')->with([
+            'skills' => $skills,
+            'offer' => $offer,
+            'offerSkills' => $offerSkills,
+        ]);
+    }
+
+
     public function create()
     {
         $jobs = Job::get('job_title');
@@ -78,10 +94,12 @@ class OffersController extends Controller
                 'job_id' => Job::where('job_title',$request->job_title)->value('id'),
                 'requirments' => $request->requirments,
                 'responsibilities' => $request->responsibilities,
+                'work_time' => $request->work_time,
+                'address' => $request->address,
                 'salary' => $salary,
             ]);
             
-            return redirect()->back()->with('msg','Job Offer Published');
+            return redirect('offer.skills.page');
 
         }
         else{
@@ -95,13 +113,12 @@ class OffersController extends Controller
      */
     public function show(string $id)
     {
-        $offer = Offer::where([ 'company_id' => Auth::guard('company')->id(),
-        'job_id' => Job::where('job_title',$request->job_title)->value('id'),
-        'requirments' => $request->requirments,
-        'responsibilities' => $request->responsibilities,
-        'salary' => $salary,
-    ]);
-       
+        $offerSkills = OfferSkill::where('offer_id',$id)->get();
+        $offer =  Offer::where('id', $id)->get()->first();
+        return view('offer-show')->with([
+            'offer' => $offer,
+            'offer_skills' => $offerSkills,
+        ]); 
     } 
 
     /**
@@ -109,7 +126,13 @@ class OffersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $jobs = Job::get('job_title');
+        $offer = Offer::where('id', $id)->get()->first();
+        return view('company.edit-offer')->with([
+            'jobs' =>$jobs, 
+            'offer' =>$offer, 
+        ]);
+
     }
 
     /**
@@ -117,7 +140,23 @@ class OffersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $salary = $request->minSalary .'$-'.$request->maxSalary.'$';
+
+        if(Auth::guard('company')->check()){
+            $offer = Offer::where('id', $id)->update([
+                'requirments' => $request->requirments,
+                'responsibilities' => $request->responsibilities,
+                'work_time' => $request->work_time,
+                'salary' => $salary,
+            ]);
+            
+            return redirect('offer.skills.page');
+
+        }
+        else{
+            return redirect()->back()->with('msg','Pls loging first');
+        }
+       
     }
 
     /**
@@ -130,5 +169,18 @@ class OffersController extends Controller
         }
         return redirect('offers');
         
+    }
+
+
+
+    public function skillFilter(Request $request)
+    {
+        $skill_id = $request->skill_id;
+        $offers = OfferSkill::where('skill_id', $skill_id)->get();
+        $skills = Skill::get();
+            return view('filtered-offers')->with([
+                'offers'=> $offers,
+                'skills'=> $skills,
+            ]);
     }
 }

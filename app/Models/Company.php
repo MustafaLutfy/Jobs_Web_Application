@@ -31,6 +31,7 @@ class Company extends Authenticatable
         'Address',
         'zip_code',
         'employees_number',
+        'establishing_date',
         'profile_photo_path',
         'website',
         'cp_logo_path',

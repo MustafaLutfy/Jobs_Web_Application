@@ -13,16 +13,26 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-full">
+                    <h1 class="text-gray-700 text-lg font-semibold">Searching for job</h1>
+                    <p class="text-gray-500 text-sm mt-2">Check this Box to allow the companies in your field to see you profile and have more opportunities</p>
+                    <form method="post" action="{{ route('is.searching') }}" class="space-y-6">
+                        @csrf
+                        @method('PUT')
+                        <label for="is_searching" class="inline-flex items-center">
+                            <input class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" onchange="this.form.submit()" name="is_searching" type="checkbox" value="1" {{$current}}>
+                            <span class="ml-2 text-sm text-gray-600">{{ __("I'm Searching for job") }}</span>
+                        </label>
+                    </form>                    
+                  
+                </div>
+            </div>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
 
                     @include('profile.partials.update-profile-information-form')
                    
-                    <form method="post" action="{{ route('is.searching') }}" class="mt-6 space-y-6">
-                        @csrf
-                        @method('PUT')
-
-                        <input onchange="this.form.submit()" name="is_searching" type="checkbox" value="1" {{$current}}>
-                    </form> 
+                  
                     
                 </div>
             </div>
