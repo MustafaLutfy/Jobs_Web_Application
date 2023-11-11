@@ -16,6 +16,7 @@ use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\LanguagesController;
+use App\Http\Controllers\ProfileController;
 
 Route::middleware('guest')->group(function () {
     Route::get('user/register', [RegisteredUserController::class, 'create']);
@@ -66,6 +67,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('profile/skill/add', [SkillsController::class, 'addSkill'])->name('add.skill');
+    Route::delete('profile/remove/image', [ProfileController::class, 'deleteImage'])->name('Image.delete');
     Route::delete('profile/skill/remove/{id}', [SkillsController::class, 'removeSkill'])->name('skill.remove');
     Route::post('profile/education/add', [EducationController::class, 'addEducation'])->name('add.education');
     Route::delete('profile/education/remove/{id}', [EducationController::class, 'removeEducation'])->name('remove.education');

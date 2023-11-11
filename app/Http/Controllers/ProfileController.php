@@ -124,6 +124,21 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    public function deleteImage(){
+
+        // $userImage = User::where('id', Auth::user()->id)->profile_photo_path;
+        // File::delete(public_path("users_images/".$userImage));
+        // $user = User::where('id', Auth::user()->id)->update([
+        //          'profile_photo_path' => null,
+        //      ]);
+        $userImage =  Auth::user()->id->profile_photo_path;
+        File::delete(public_path("users_images/".$userImage));
+        $user = User::where('id', Auth::user()->id)->update([
+            'profile_photo_path' => null,
+        ]);
+       
+    }
+
     /**
      * Delete the user's account.
      */
