@@ -24,6 +24,7 @@ class PagesController extends Controller
                 'offers'=> $offers,
                 'job_titles'=> $job_titles,
                 'skills'=> $skills,
+                'isFiltered'=> false,
             ]);
     }
     
