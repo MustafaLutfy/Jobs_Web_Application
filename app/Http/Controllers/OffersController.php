@@ -178,9 +178,24 @@ class OffersController extends Controller
         $skill_id = $request->skill_id;
         $offers = OfferSkill::where('skill_id', $skill_id)->get();
         $skills = Skill::get();
-            return view('filtered-offers')->with([
+        if($offers){
+            return view('offers')->with([
+                'offers'=> $offers,
+                'skills'=> $skills,
+                'isFiltered'=> true,
+            ]);
+        }
+            
+    }
+    public function orderBy(Request $request)
+    {
+        $skill_id = $request->skill_id;
+        $offers = Offer::where('skill_id', $skill_id)->get();
+        if($offers){
+            return view('offers')->with([
                 'offers'=> $offers,
                 'skills'=> $skills,
             ]);
+        }  
     }
 }
