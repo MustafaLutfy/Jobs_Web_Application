@@ -163,10 +163,13 @@
                         <button type="button" id="next-btn" class="ml-4 bg-[#7566B4] px-4 py-2 text-white rounded">
                             Next
                         <button>
+                        <a class="underline ml-3 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            href="{{ route('company.login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
                         <button type="submit" id="submit-btn" class="ml-4 bg-[#7566B4] px-4 py-2 text-white rounded hidden">
                             Register
                         <button>
-                       
                     </div>
                  </div>
                 </form>

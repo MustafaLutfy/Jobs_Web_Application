@@ -99,7 +99,7 @@ class OffersController extends Controller
                 'salary' => $salary,
             ]);
             
-            return redirect('offer.skills.page');
+            return view('company.offer-show');
 
         }
         else{
