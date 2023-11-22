@@ -98,6 +98,7 @@ Route::get('/offer/{id}', [OffersController::class, 'show'])->name('offer.show')
 
 Route::get('/offers', [PagesController::class, 'getOffers'])->name('offers');
 Route::post('/offers/fillters/skill', [OffersController::class, 'skillFilter'])->name('offers.skill.filter');
+Route::post('/offers/fillters/orderby', [OffersController::class, 'orderBy'])->name('offers.orderby.filter');
 Route::get('/user/applies', [PagesController::class, 'getApplies'])->name('get.user.applies');
 Route::delete('/offer/remove/{id}', [OffersController::class, 'removeOffer'])->name('remove.offer');
 Route::get('/offer/apply/{id}', [OffersController::class, 'createApply'])->middleware(['auth', 'verified'])->name('get.job.apply');

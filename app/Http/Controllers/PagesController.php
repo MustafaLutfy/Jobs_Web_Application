@@ -18,7 +18,7 @@ class PagesController extends Controller
 {
     public function getOffers(){
         $job_titles = Job::get('job_title');
-        $offers = Offer::get();
+        $offers = Offer::orderBy('created_at', 'desc')->get();
         $skills = Skill::get();
             return view('offers')->with([
                 'offers'=> $offers,

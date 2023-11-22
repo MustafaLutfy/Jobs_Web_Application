@@ -189,13 +189,26 @@ class OffersController extends Controller
     }
     public function orderBy(Request $request)
     {
-        $skill_id = $request->skill_id;
-        $offers = Offer::where('skill_id', $skill_id)->get();
-        if($offers){
+        $skill_id = $request->skill_id;       
+        $skills = Skill::get(); 
+        if($request->orderby == 'newer_first' || $request->orderby == null){
+            $offers = Offer::get()->orderBy('created_at', 'desc');
+        }
+        switch($request->orderby){
+            case 'older_first':
+                $offers = Offer::orderBy('created_at')->get();
+                break;
+            case 'work_time':
+                $offers = Offer::orderBy('work_time', 'desc')->get();
+                break;
+           
+        }
             return view('offers')->with([
                 'offers'=> $offers,
                 'skills'=> $skills,
+                'isFiltered'=> false,
+
             ]);
-        }  
+        
     }
 }
