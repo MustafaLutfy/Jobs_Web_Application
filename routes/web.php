@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
@@ -132,6 +133,7 @@ Route::post('/company/chat/{id}', [ChatController::class, 'addMessage'])->name('
 Route::delete('/company/chat/delete/{id}', [ChatController::class, 'messageDelete'])->name('message.delete');
 
 
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
 
 require __DIR__.'/auth.php';
