@@ -39,6 +39,21 @@ class AdminController extends Controller
         }
     }
 
+    public function allOffers(){
+        $companies = Company::get();
+        $offers = Offer::get();
+        if(Auth::user()->is_admin == 1){
+            return view('admin.all-offers')->with([
+                'companies' => $companies,
+                'offers' => $offers,
+
+            ]);
+
+    }
+}
+
+
+
     public function showProfileForUser($id){
         $company = Company::where('id', $id)->get()->first();
         return view('company-profile', ['id' => $id])->with([

@@ -132,8 +132,9 @@ Route::post('/user/chat/{id}', [ChatController::class, 'addMessage'])->name('mes
 Route::post('/company/chat/{id}', [ChatController::class, 'addMessage'])->name('message.send');
 Route::delete('/company/chat/delete/{id}', [ChatController::class, 'messageDelete'])->name('message.delete');
 
-
+// admin routs
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/all-offers', [AdminController::class, 'allOffers'])->name('admin.all-offers');
 
 
 require __DIR__.'/auth.php';

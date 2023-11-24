@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->string('current_pos')->nullable();
             $table->boolean('job_searching')->nullable()->default(false);
+            $table->integer('is_admin')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
