@@ -49,8 +49,31 @@ class AdminController extends Controller
 
             ]);
 
+        }
     }
-}
+
+    public function companyRequest(){
+        $companies = Company::where('isActivated', 0)->get();
+        return view('admin.companies-request')->with([
+            'companies' => $companies,
+        ]);
+    }
+
+
+    public function requestActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Activate'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 1,
+                ]);
+            }
+            else{
+                Company::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
+    
 
 
 

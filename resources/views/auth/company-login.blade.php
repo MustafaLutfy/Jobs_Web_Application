@@ -67,9 +67,11 @@
                 dream job <br> using Hired.
             </p>
         </div>
+       
         <form class="flex flex-col  justify-center px-[10%] w-full" method="POST" action="{{ route('company.login') }}">
             @csrf
-    
+            
+            
             <!-- Email Address -->
             <div>
                 <x-input-label for="cp_email" :value="__('Email')" />
@@ -88,7 +90,11 @@
     
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
-    
+             @if(session()->has('message')) 
+            <p class="text-sm text-red-600 mt-2">
+               {{session()->get('message')}}
+           </p>
+           @endif 
             <!-- Remember Me -->
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
@@ -107,8 +113,11 @@
                 <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
+                
             </div>
+             
         </form>
+        
 </div>
     
 </x-guest-layout>

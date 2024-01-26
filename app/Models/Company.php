@@ -36,6 +36,7 @@ class Company extends Authenticatable
         'website',
         'cp_logo_path',
         'description',
+        'isActivated',
 
     ];
 

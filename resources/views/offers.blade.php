@@ -1,5 +1,5 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-@auth
+
 <x-app-layout>
 
     <div class="w-full h-16 flex justify-center mt-16">
@@ -113,9 +113,8 @@
             </div>
 
 </x-app-layout>
-@endauth
 
-<x-guest-layout>
+{{-- <x-guest-layout>
 <div class="w-full h-16 flex justify-center mt-16">
     <div class="w-[80%] bg-white h-full rounded-lg flex justify-between items-center p-3">
 
@@ -229,4 +228,4 @@
         <div>
         </div>
 
-    </x-guest-layout>
+    </x-guest-layout> --}}

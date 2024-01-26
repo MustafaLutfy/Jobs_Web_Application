@@ -111,21 +111,27 @@ class CompanyController extends Controller
 
     public function login(Request $request)
     {
-
-        $request->validate([
-            'cp_email' => ['required', 'email', 'max:60'],
-            'password' => ['required', 'min:8'],
-        ]);
-        $login = $request->only('cp_email', 'password');
-
-        if(Auth::guard('company')->attempt($login)){
-
-            return redirect()->intended(RouteServiceProvider::COMPANY_HOME);
-
+        $company = Company::where('cp_email', $request->cp_email)->first();
+        if($company->isActivated == true){
+            $request->validate([
+                'cp_email' => ['required', 'email', 'max:60'],
+                'password' => ['required', 'min:8'],
+            ]);
+            $login = $request->only('cp_email', 'password');
+    
+            if(Auth::guard('company')->attempt($login)){
+    
+                return redirect()->intended(RouteServiceProvider::COMPANY_HOME);
+    
+            }
+            else{
+                return redirect()->route('company.login')->with('message', 'Email or password is incorrect');
+            }
         }
         else{
-            return redirect()->route('company.login');
-        }
+            return redirect()->route('company.login')->with('message', 'Please wait while admins activate you account');
+    }
+        
     }
 
     public function logout(Request $request): RedirectResponse
