@@ -129,7 +129,7 @@ class CompanyController extends Controller
             }
         }
         else{
-            return redirect()->route('company.login')->with('message', 'Please wait while admins activate you account');
+            return redirect()->route('company.login')->with('message', 'Please wait while admins activate your account');
     }
         
     }

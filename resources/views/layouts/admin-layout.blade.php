@@ -124,7 +124,7 @@
                        
                     </li>
                     <li class="relative px-6 py-3">
-                    @if (Route::currentRouteName() == 'company.profile')
+                    @if (Route::currentRouteName() == 'company-request-page')
                     <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                       aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm text-gray-800 font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
@@ -137,6 +137,23 @@
                             href="{{route('company-request-page')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M9 8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
                             <span class="ml-4">Company Requests</span>
+                        </a>
+                        @endif
+                    </li>
+                    <li class="relative px-6 py-3">
+                    @if (Route::currentRouteName() == 'all-companies')
+                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                      aria-hidden="true"></span>
+                        <a class="inline-flex items-center w-full text-sm text-gray-800 font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="{{route('all-companies')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M22 22H2"/><path d="M21 22V6c0-1.886 0-2.828-.586-3.414C19.828 2 18.886 2 17 2h-2c-1.886 0-2.828 0-3.414.586c-.472.471-.564 1.174-.582 2.414"/><path d="M15 22V9c0-1.886 0-2.828-.586-3.414C13.828 5 12.886 5 11 5H7c-1.886 0-2.828 0-3.414.586C3 6.172 3 7.114 3 9v13"/><path stroke-linecap="round" d="M9 22v-3M6 8h6m-6 3h6m-6 3h6"/></g></svg>                           
+                            <span class="ml-4">All companies</span>
+                        </a>
+                        @else
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="{{route('all-companies')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M22 22H2"/><path d="M21 22V6c0-1.886 0-2.828-.586-3.414C19.828 2 18.886 2 17 2h-2c-1.886 0-2.828 0-3.414.586c-.472.471-.564 1.174-.582 2.414"/><path d="M15 22V9c0-1.886 0-2.828-.586-3.414C13.828 5 12.886 5 11 5H7c-1.886 0-2.828 0-3.414.586C3 6.172 3 7.114 3 9v13"/><path stroke-linecap="round" d="M9 22v-3M6 8h6m-6 3h6m-6 3h6"/></g></svg>                           
+                            <span class="ml-4">All companies</span>
                         </a>
                         @endif
                     </li>

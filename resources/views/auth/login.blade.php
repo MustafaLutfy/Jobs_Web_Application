@@ -18,7 +18,8 @@
         </div>
     <form class="flex flex-col  justify-center px-[10%] w-full" method="POST" action="{{ route('user.login') }}">
         @csrf
-
+        
+        <a class="p-2 mx-24 bg-purple-400 mb-4 rounded-md text-white text-center" href="{{ route('company.dashboard') }}">Sign as company</a>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />

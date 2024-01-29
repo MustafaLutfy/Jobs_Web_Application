@@ -137,6 +137,9 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('/admin/alloffers', [AdminController::class, 'allOffers'])->name('admin.all-offers');
 Route::get('/admin/companyrequest', [AdminController::class, 'companyRequest'])->name('company-request-page');
 Route::put('/admin/actions/{id}', [AdminController::class, 'requestActions'])->name('company-request-actions');
+Route::get('/admin/companies', [AdminController::class, 'allCompanies'])->name('all-companies');
+Route::put('/admin/active/actions/{id}', [AdminController::class, 'companyActions'])->name('active-company-actions');
+
 
 
 require __DIR__.'/auth.php';

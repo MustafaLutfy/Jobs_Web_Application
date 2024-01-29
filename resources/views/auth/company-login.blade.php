@@ -71,7 +71,8 @@
         <form class="flex flex-col  justify-center px-[10%] w-full" method="POST" action="{{ route('company.login') }}">
             @csrf
             
-            
+            <a class="p-2 mx-24 bg-purple-400 mb-4 rounded-md text-white text-center" href="{{ route('dashboard') }}">Sign as user</a>
+
             <!-- Email Address -->
             <div>
                 <x-input-label for="cp_email" :value="__('Email')" />

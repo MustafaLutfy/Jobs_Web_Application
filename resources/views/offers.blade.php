@@ -5,7 +5,7 @@
     <div class="w-full h-16 flex justify-center mt-16">
         <div class="w-[80%] bg-white h-full rounded-lg flex justify-between items-center p-3 ">
             <div class="flex justify-center">
-            <form class="pt-3 mr-4" action="{{ route('offers.skill.filter') }}" method="post">
+            <form class="pt-3 mx-4" action="{{ route('offers.skill.filter') }}" method="post">
                 @csrf
                 <select name='skill_id' onchange="this.form.submit()" id="underline_select"
                     class="block w-[25vw] py-2.5 px-0 text-md text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -15,7 +15,7 @@
                     @endforeach
                 </select>
             </form>
-            <form class="pt-3" action="{{ route('offers.orderby.filter') }}" method="post">
+            <form class="pt-3  mr-4" action="{{ route('offers.orderby.filter') }}" method="post">
                 @csrf
                 <select name='orderby' onchange="this.form.submit()" id="orderby_select"
                     class="block text-md w-[25vw] py-2.5 px-0 text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -24,9 +24,17 @@
                     <option value="older_first">Older First</option>
                 </select>
             </form>
+            <form class="pt-3" action="{{ route('offers.orderby.filter') }}" method="post">
+                @csrf
+                <select name='orderby' onchange="this.form.submit()" id="orderby_select"
+                    class="block text-md w-[25vw] py-2.5 px-0 text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option>Job title</option>
+                    @foreach ($job_titles as $job_title)
+                        <option>{{$job_title->job_title}}</option>
+                    @endforeach
+                </select>
+            </form>
          </div>
-            <button class="bg-[#9F94CB] text-white rounded-md px-2 py-2">Search</button>
-
         </div>
         <!--end search bar-->
     </div>

@@ -74,17 +74,6 @@ class OffersController extends Controller
     
     public function store(Request $request)
     {
-
-        // return $request;
-        // $request->validate([
-        //     // 'company_id' => ['required', 'numeric'],
-        //     // 'job_id' => ['required', 'numeric'],
-        //     // 'requirments' => ['required','string'],
-        //     // 'responsibilities' => ['required','string'],
-        //     // 'salary' => ['required', 'string', 'max:30'], 
-        // //  'work_time' => ['required', 'string', 'max:30'],
-
-        // ]);
         
         $salary = $request->minSalary .'$-'.$request->maxSalary.'$';
 

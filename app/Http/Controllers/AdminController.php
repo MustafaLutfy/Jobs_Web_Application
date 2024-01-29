@@ -58,6 +58,12 @@ class AdminController extends Controller
             'companies' => $companies,
         ]);
     }
+    public function allCompanies(){
+        $companies = Company::get();
+        return view('admin.all-companies')->with([
+            'companies' => $companies,
+        ]);
+    }
 
 
     public function requestActions(Request $request, $id){
@@ -73,9 +79,28 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+
+    public function companyActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Disable'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 0,
+                ]);
+            }
+            elseif($request->action == 'Enable'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 1,
+                ]);
+            }
+            else{
+                Company::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
     
-
-
+    
 
     public function showProfileForUser($id){
         $company = Company::where('id', $id)->get()->first();
