@@ -22,28 +22,31 @@
                   >
 
                   @foreach($companies as $company)
-                  <tr class="text-gray-700 dark:text-gray-400">
+                  <tr class="text-gray-700 dark:text-gray-400 group">
                     <td class="px-4 py-3">
-                      <div class="flex items-center text-sm">
-                        <!-- Avatar with inset shadow -->
-                        <div
-                          class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
-                        >
-                          <img
-                            class="object-cover w-full h-full rounded-full"
-                            src="{{asset('users_images/' . $company->cp_logo_path)}}"
-                            alt=""
-                            loading="lazy"
-                          />
+                      <a href="{{route('cp.profile.show', $company->id)}}">
+                        <div class="flex items-center text-sm">
+                          <!-- Avatar with inset shadow -->
                           <div
-                            class="absolute inset-0 rounded-full shadow-inner"
-                            aria-hidden="true"
-                          ></div>
+                            class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
+                          >
+                            <img
+                              class="object-cover w-full h-full rounded-full"
+                              src="{{asset('users_images/' . $company->cp_logo_path)}}"
+                              alt=""
+                              loading="lazy"
+                            />
+                            <div
+                              class="absolute inset-0 rounded-full shadow-inner"
+                              aria-hidden="true"
+                            ></div>
+                          </div>
+                          <div class="flex gap-2">
+                            <p class="font-semibold">{{$company->cp_name}}</p>
+                            <p class="text-blue-600 opacity-0 group-hover:opacity-100 transition-all">Profile</p>
+                          </div>
                         </div>
-                        <div>
-                          <p class="font-semibold">{{$company->cp_name}}</p>
-                        </div>
-                      </div>
+                      </a>
                     </td>
                     <td class="px-4 py-3 text-sm">
                     {{$company->employees_number}}

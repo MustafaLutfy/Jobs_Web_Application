@@ -156,7 +156,12 @@ class OffersController extends Controller
         if(Auth::guard('company')){
             Offer::where('id', $id)->delete();  
         }
-        return redirect('offers');
+        if(Auth::user()->is_admin == 0){
+            return redirect('offers');
+        }
+        elseif(Auth::user()->is_admin == 1){
+            return redirect()->back();
+        }
         
     }
 
