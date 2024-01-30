@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('current_pos')->nullable();
             $table->boolean('job_searching')->nullable()->default(false);
             $table->integer('is_admin')->nullable();
+            $table->integer('is_active')->default(true);
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

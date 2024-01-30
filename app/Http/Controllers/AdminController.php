@@ -51,6 +51,16 @@ class AdminController extends Controller
 
         }
     }
+    public function allUsers(){
+        $users = User::get();
+        if(Auth::user()->is_admin == 1){
+            return view('admin.all-users')->with([
+                'users' => $users,
+
+            ]);
+
+        }
+    }
 
     public function companyRequest(){
         $companies = Company::where('isActivated', 0)->get();
@@ -95,6 +105,25 @@ class AdminController extends Controller
             }
             else{
                 Company::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
+
+    public function userActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Disable'){
+                User::where('id', $id)->update([
+                    'is_active' => 0,
+                ]);
+            }
+            elseif($request->action == 'Enable'){
+                User::where('id', $id)->update([
+                    'is_active' => 1,
+                ]);
+            }
+            else{
+                User::where('id', $id)->delete();
             }
             return redirect()->back();
         }

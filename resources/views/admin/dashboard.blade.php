@@ -183,7 +183,12 @@
                       </div>
                     </td>
                     <td class="px-4 py-3 text-sm">
-                      {{$apply->offer->job->job_title}}
+                      @if ($apply->offer)
+                        {{$apply->offer->job->job_title}}
+                      @else
+                         0
+                      @endif
+
                     </td>
                     <td class="px-4 py-3 text-xs">
                       @if ($apply->status == 'Waiting')
