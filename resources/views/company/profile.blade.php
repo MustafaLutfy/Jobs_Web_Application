@@ -51,11 +51,11 @@
             </div>
             <div class="mt-4">
                 <h1 class="text-[#7868B6] font-semibold ">Company CEO</h1>
-                <h1 class="text-gray-500 mt-1">Mustafa Gasm Gsom</h1>
+                <h1 class="text-gray-500 mt-1">Zubaiduh Abbas fadel</h1>
             </div>
             <div class="mt-4">
                 <h1 class="text-[#7868B6] font-semibold ">Contacts Manager</h1>
-                <h1 class="text-gray-500 mt-1">Mustafa Gasm Gwesm</h1>
+                <h1 class="text-gray-500 mt-1">Full username</h1>
             </div>
 
             

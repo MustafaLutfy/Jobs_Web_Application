@@ -5,7 +5,7 @@
     <ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
         @foreach ($job_applies as $job_apply)
         <li class="mb-6">
-            <a  href="{{url('offer/' . $job_apply->id)}}">
+            <a  href="{{url('offer/' . $job_apply->offer_id)}}">
                 <!-- offer -->
                 <div 
                     class="group w-full  h-[150px] border flex items-center p-4 px-6 transition duration-300 hover:drop-shadow-lg drop-shadow-sm hover:border-[#7566B4] rounded-xl border-gray-300 bg-white">
@@ -73,7 +73,7 @@
                             <span
                             class="flex items-center px-3 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-md dark:bg-green-700 dark:text-green-100">
                             {{$job_apply->status}}
-                          </span>
+                            </span>
                             @elseif($job_apply->status == 'Declined')
                             <span
                             class="flex items-center px-3 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-md dark:bg-green-700 dark:text-green-100">
@@ -82,7 +82,7 @@
                             @else
                             <span
                             class="flex items-center px-3 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-md dark:bg-green-700 dark:text-green-100">
-                            {{$job_apply->status}}
+                            Pending
                             </span>
                             @endif
                         </div>

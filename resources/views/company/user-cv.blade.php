@@ -10,7 +10,7 @@
             <div class="w-[40vw] h-full drop-shadow-2xl grid grid-cols-3">
                 <div class="bg-gray-800 col-span-1 drop-shadow-2xl">
                     <div class="h-[30%] flex justify-center items-center p-8">
-                        <img class="rounded-full border-4 border-[#B497DD] w-[80%]" src="{{asset('assets/hussein.jpg')}}" alt="">
+                        <img class="rounded-full border-4 border-[#B497DD] w-[80%]" src="{{asset('assets/users_images/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg)}}" alt="">
                     </div>
                     <div class="h-[30%] pl-6">
                         <h3 class="text-white text-lg mb-1">EDUCATION</h3>

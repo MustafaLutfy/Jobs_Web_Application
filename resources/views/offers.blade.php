@@ -48,8 +48,8 @@
                         <div class="flex flex-col h-full w-[100%]">
                             <div class="flex items-center mb-4 mt-4">
     
-                                <img class="h-[60px] w-[60px] rounded-full p-2 ml-4 border-8 border-[#E9E6F3] transition duration-300 group-hover:border-[#9F94CB]"
-                                    src="{{($isFiltered == true ? $offer->offer->company->cp_logo_path : $offer->company->cp_logo_path == 0) ? url('assets/sample.jpg') : url('users_images/' . $offer->company->cp_logo_path) }}"
+                                <img class="h-[60px] w-[60px] rounded-full ml-4 border-8 border-[#E9E6F3] transition duration-300 group-hover:border-[#9F94CB]"
+                                    src="{{($isFiltered == true ? $offer->offer->company->cp_logo_path : $offer->company->cp_logo_path == 0) ? url('assets/sample.jpg') : url('users_images/' . 'unnamed(1).png') }}"
                                     alt="">
                                 <!-- save offer -->
                                 <div class="flex ml-auto">

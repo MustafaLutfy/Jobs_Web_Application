@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
 use App\Http\Controllers\Auth\PasswordController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified','localization'])->name('dashboard');
 
 
 // شلت منه المدل وير لازم اضيف حماية انه الشركة متكدر تقدم
@@ -145,5 +146,9 @@ Route::get('/admin/allusers', [AdminController::class, 'allUsers'])->name('admin
 Route::put('/admin/user/actions/{id}', [AdminController::class, 'userActions'])->name('active-user-actions');
 
 
+Route::get('/locale/{locale}', function (Request $request, $locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
 
 require __DIR__.'/auth.php';

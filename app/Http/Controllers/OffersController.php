@@ -153,9 +153,11 @@ class OffersController extends Controller
      */
     public function removeOffer(string $id)
     {
-        if(Auth::guard('company')){
+        if(Auth::guard('company') || Auth::user()->is_admin == 1){
+            Apply::where('offer_id', $id)->delete();
             Offer::where('id', $id)->delete();  
         }
+
         if(Auth::user()->is_admin == 0){
             return redirect('offers');
         }

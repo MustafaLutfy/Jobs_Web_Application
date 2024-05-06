@@ -5,7 +5,7 @@
             <div class="flex h-[80px] ml-[22vw]">
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 gap-10 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 gap-10 sm:-my-px sm:ml-40 sm:flex">
                    
                     @guest
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
@@ -13,7 +13,7 @@
                     </x-nav-link> 
                     @endguest
                     @auth
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link class=" {{ Session::get('locale') == 'ar' ? 'w-[135px]' : ''}} text-center" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link> 
                     @endauth
@@ -25,10 +25,6 @@
             
                     <x-nav-link class="w-[110px]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.applies')">
                         {{ __('My Applies') }}
-                    </x-nav-link>
-            
-                    <x-nav-link class="w-[100px]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
-                        {{ __('Freelance') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -82,6 +78,20 @@
                        
                     </x-slot>
                 </x-dropdown>
+                <div class="flex items-center mt-4 gap-2 ml-4 z-30 h-20 "> 
+                    <a class="w-8 h-8" href="{{ route('locale', ['locale' => 'en']) }}">
+                      <img class=" rounded-full {{ Session::get('locale') == 'en' ? 'border-2 border-green-500 ' : ''}}" src="{{asset('images/istockphoto-668235920-612x612.jpg')}}" alt="">
+                    </a>
+                    <a class="w-8 h-8" href="{{ route('locale', ['locale' => 'ar']) }}">
+                      <img class="rounded-full {{ Session::get('locale') == 'ar' ? 'border-2 border-green-500 ' : ''}}" src="{{asset('images/iq-square-01.png')}}" alt="">
+                    </a>
+                    <div id="menu-button" class="all-btn ">
+                      <div class=""> 
+                          <div class="menu-btn-1" onclick="menuBtnFunction(this)">
+                              <span></span>
+                          </div>
+                      </div>
+                  </div>
             </div>
             @endauth
 
@@ -132,7 +142,7 @@
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 @endauth
             </div>
-
+        
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
@@ -148,6 +158,8 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                
+              
             </div>
         </div>
     </div> 
