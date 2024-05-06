@@ -44,23 +44,27 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        @if (Auth::user()->is_admin == 1)
+                        @if(Auth::user()->is_admin == 1)
                         <x-dropdown-link :href="route('admin.dashboard')">
                             {{ __('Admin Dashboard') }}
                         </x-dropdown-link>
                         @endif
-                       
 
-                        <!-- Authentication -->
+
                         <form method="POST" action="{{ route('user.logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('user.logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                        this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                       
+                       
+
+                        <!-- Authentication -->
+                        
+                       
                     </x-slot>
                 </x-dropdown>
             </div>
