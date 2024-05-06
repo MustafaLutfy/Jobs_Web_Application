@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('description');
             $table->string('website');
+            $table->boolean('isActivated')->default(false);
             $table->enum('employees_number', ['1-5', '5-20', '20-100', '100-1000', '1000+']);
             $table->date('establishing_date');
             $table->rememberToken();

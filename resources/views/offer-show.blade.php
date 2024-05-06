@@ -3,7 +3,9 @@
                 <div class="w-[60%] bg-white rounded-xl border p-10">
                     <div class="group w-[100%] h-[150px] flex items-center ">
                         <img class="h-[94%] border-2 rounded-md"
-                            src="{{ $offer->company->cp_logo_path == 0 ? url('assets/sample.jpg') : url('users_images/' . $offer->company->cp_logo_path) }}"
+                            {{-- src="{{ $offer->company->cp_logo_path == 0 ? url('assets/sample.jpg') : url(''users_images/' . $offer->company->cp_logo_path') }}" --}}
+                            src="{{url('users_images/download.png')}}"
+
                             alt="">
                         <div class="h-[100%] flex ml-4 justify-between flex-col">
                             <div class="flex justify-between w-[100%]">

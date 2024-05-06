@@ -17,8 +17,8 @@
 
         <div class="flex items-center gap-10">
                     <!-- image -->
-                    <div class="bg-[#8A7BC8] rounded-full w-[60px] h-[60px] p-1 mr-0">
-                        <img class="rounded-full" src="{{asset('users_images/'.Auth::user()->profile_photo_path)}}" alt="">
+                    <div class="bg-[#8A7BC8] rounded-full p-1 w-[60px] h-[60px]">
+                        <img class="rounded-full pt-0.5" src="{{asset('users_images/Screenshot 2024-02-13 063559.png   ')}}" alt="">
                     </div>
 
                     <input

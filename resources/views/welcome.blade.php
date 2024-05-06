@@ -25,8 +25,8 @@
         
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 gap-10 sm:-my-px ml-[25%] sm:flex">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Home') }}
                             </x-nav-link>
         
                             <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
@@ -59,7 +59,7 @@
                                            <a  class="text-[#7767B5] font-bold" href="{{ route('user.login') }}">Login</a>
                                           
                                      </div>
-                                 </div>
+                            </div>
                     </div>
 
                 

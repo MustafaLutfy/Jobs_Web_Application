@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('cp_layout/assets/css/tailwind.output.css') }}" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
@@ -26,7 +26,7 @@
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white h-screen dark:bg-gray-800 md:block flex-shrink-0">
             <div class="py-4 text-gray-500 dark:text-gray-400">
                 <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-                    Windmill
+                    Dashboard
                 </a>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
@@ -88,19 +88,19 @@
                         @endif
                     </li>
                     <li class="relative px-6 py-3">
-                    @if (Route::currentRouteName() == 'get.talents')
+                    @if (Route::currentRouteName() == 'admin.all-users')
                     <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                       aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="{{route('get.talents')}}">
+                            href="{{route('admin.all-users')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 16 16"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0a2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1s1-4 6-4s6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10Z"/></svg>
                             <span class="ml-4">All Users</span>
                         </a>
                         @else
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="{{route('get.talents')}}">
+                            href="{{route('admin.all-users')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 16 16"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0a2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1s1-4 6-4s6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664h10Z"/></svg>
-                            <span class="ml-4">All Offers</span>
+                            <span class="ml-4">All Users</span>
                         </a>
                         @endif
                     </li>
@@ -124,19 +124,36 @@
                        
                     </li>
                     <li class="relative px-6 py-3">
-                    @if (Route::currentRouteName() == 'company.profile')
+                    @if (Route::currentRouteName() == 'company-request-page')
                     <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                       aria-hidden="true"></span>
                         <a class="inline-flex items-center w-full text-sm text-gray-800 font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="{{route('company.profile', Auth::user()->id)}}">
+                            href="{{route('company-request-page')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M9 8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
-                            <span class="ml-4">All Companies</span>
+                            <span class="ml-4">Company Requests</span>
                         </a>
                         @else
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                            href="{{route('company.profile', Auth::user()->id)}}">
+                            href="{{route('company-request-page')}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M9 8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
-                            <span class="ml-4">All Companies</span>
+                            <span class="ml-4">Company Requests</span>
+                        </a>
+                        @endif
+                    </li>
+                    <li class="relative px-6 py-3">
+                    @if (Route::currentRouteName() == 'all-companies')
+                    <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                      aria-hidden="true"></span>
+                        <a class="inline-flex items-center w-full text-sm text-gray-800 font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="{{route('all-companies')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M22 22H2"/><path d="M21 22V6c0-1.886 0-2.828-.586-3.414C19.828 2 18.886 2 17 2h-2c-1.886 0-2.828 0-3.414.586c-.472.471-.564 1.174-.582 2.414"/><path d="M15 22V9c0-1.886 0-2.828-.586-3.414C13.828 5 12.886 5 11 5H7c-1.886 0-2.828 0-3.414.586C3 6.172 3 7.114 3 9v13"/><path stroke-linecap="round" d="M9 22v-3M6 8h6m-6 3h6m-6 3h6"/></g></svg>                           
+                            <span class="ml-4">All companies</span>
+                        </a>
+                        @else
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                            href="{{route('all-companies')}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M22 22H2"/><path d="M21 22V6c0-1.886 0-2.828-.586-3.414C19.828 2 18.886 2 17 2h-2c-1.886 0-2.828 0-3.414.586c-.472.471-.564 1.174-.582 2.414"/><path d="M15 22V9c0-1.886 0-2.828-.586-3.414C13.828 5 12.886 5 11 5H7c-1.886 0-2.828 0-3.414.586C3 6.172 3 7.114 3 9v13"/><path stroke-linecap="round" d="M9 22v-3M6 8h6m-6 3h6m-6 3h6"/></g></svg>                           
+                            <span class="ml-4">All companies</span>
                         </a>
                         @endif
                     </li>
@@ -147,13 +164,13 @@
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 text-gray-800 hover:text-gray-800 dark:hover:text-gray-200"
                             href="modals.html">
                             <svg xmlns="http://www.w3.org/2000/svg"class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72Z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M336 304c-65.17 0-127.84 32.37-143.54 95.41c-2.08 8.34 3.15 16.59 11.72 16.59h263.65c8.57 0 13.77-8.25 11.72-16.59C463.85 335.36 401.18 304 336 304Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M200 185.94c-2.34 32.48-26.72 58.06-53 58.06s-50.7-25.57-53-58.06C91.61 152.15 115.34 128 147 128s55.39 24.77 53 57.94Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M206 306c-18.05-8.27-37.93-11.45-59-11.45c-52 0-102.1 25.85-114.65 76.2c-1.65 6.66 2.53 13.25 9.37 13.25H154"/></svg>
-                           <span class="ml-4">Our Employees</span>
+                           <span class="ml-4">Our Admins</span>
                         </a>
                         @else
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                             href="modals.html">
                             <svg xmlns="http://www.w3.org/2000/svg"class="w-5 h-5" stroke-width="0.5" stroke="currentColor" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72Z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M336 304c-65.17 0-127.84 32.37-143.54 95.41c-2.08 8.34 3.15 16.59 11.72 16.59h263.65c8.57 0 13.77-8.25 11.72-16.59C463.85 335.36 401.18 304 336 304Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M200 185.94c-2.34 32.48-26.72 58.06-53 58.06s-50.7-25.57-53-58.06C91.61 152.15 115.34 128 147 128s55.39 24.77 53 57.94Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M206 306c-18.05-8.27-37.93-11.45-59-11.45c-52 0-102.1 25.85-114.65 76.2c-1.65 6.66 2.53 13.25 9.37 13.25H154"/></svg>
-                           <span class="ml-4">Our Employees</span>
+                           <span class="ml-4">Our Admins</span>
                         </a>
                         @endif
                     </li>

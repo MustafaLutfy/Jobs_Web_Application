@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\RegisteredCompanyController;
 use App\Http\Controllers\Auth\PasswordController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Route::get('/', function () {
 
 
 
-Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/user/dashboard', [PagesController::class, 'getUserHome'])->middleware(['auth', 'verified','localization'])->name('dashboard');
 
 
 // شلت منه المدل وير لازم اضيف حماية انه الشركة متكدر تقدم
@@ -132,9 +133,22 @@ Route::post('/user/chat/{id}', [ChatController::class, 'addMessage'])->name('mes
 Route::post('/company/chat/{id}', [ChatController::class, 'addMessage'])->name('message.send');
 Route::delete('/company/chat/delete/{id}', [ChatController::class, 'messageDelete'])->name('message.delete');
 
-// admin routs
-Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/all-offers', [AdminController::class, 'allOffers'])->name('admin.all-offers');
 
+
+// admin routes
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/alloffers', [AdminController::class, 'allOffers'])->name('admin.all-offers');
+Route::get('/admin/companyrequest', [AdminController::class, 'companyRequest'])->name('company-request-page');
+Route::put('/admin/actions/{id}', [AdminController::class, 'requestActions'])->name('company-request-actions');
+Route::get('/admin/companies', [AdminController::class, 'allCompanies'])->name('all-companies');
+Route::put('/admin/company/actions/{id}', [AdminController::class, 'companyActions'])->name('active-company-actions');
+Route::get('/admin/allusers', [AdminController::class, 'allUsers'])->name('admin.all-users');
+Route::put('/admin/user/actions/{id}', [AdminController::class, 'userActions'])->name('active-user-actions');
+
+
+Route::get('/locale/{locale}', function (Request $request, $locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
+})->name('locale');
 
 require __DIR__.'/auth.php';

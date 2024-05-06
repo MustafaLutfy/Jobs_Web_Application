@@ -20,7 +20,7 @@
         <div class="w-[40vw] h-full drop-shadow-2xl grid grid-cols-3">
             <div class="bg-gray-800 col-span-1 drop-shadow-2xl">
                 <div class="h-[30%] flex justify-center items-center p-8">
-                    <img class="rounded-full border-4 border-[#B497DD] w-[80%]" src="{{asset('assets/hussein.jpg')}}" alt="">
+                    <img class="rounded-full object-contain border-4 bg-white border-[#B497DD] w-[80%]" src="{{asset('users_images/Screenshot 2024-02-13 063559.png')}}" alt="">
                 </div>
                 <div class="h-[30%] pl-6">
                     <h3 class="text-white text-lg mb-1">EDUCATION</h3>
@@ -72,6 +72,7 @@
                     <h1 class="text-xl text-gray-700 font-semibold mb-1">About Me</h1>
                     <div class="h-[2px] w-full bg-gray-700"></div>
                     <p class="text-sm mt-2">{{$user->discription}}</p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste eum itaque ipsa, aliquid suscipit laudantium assumenda delectus necessitatibus reprehenderit adipisci repudiandae ipsum temporibus nostrum veritatis possimus hic facilis earum explicabo.
                 </div>
 
 
@@ -88,7 +89,20 @@
                                 </div>
                             </li>
                         @endforeach 
-                        
+                        <li class="text-sm flex mt-4">
+                            <p class="mr-8">2015-2019</p>
+                            <div>
+                                <p>Progammer</p>
+                                <p>Qi Card / location</p>
+                            </div>
+                        </li>
+                        <li class="text-sm flex mt-4">
+                            <p class="mr-8">2019-2023</p>
+                            <div>
+                                <p>Team Leader</p>
+                                <p>Asiacell / location</p>
+                            </div>
+                        </li>
         
                     </ul>
                 </div>
@@ -104,7 +118,15 @@
                         </li>
                  
                       @endforeach
-                   
+                      <li class="text-sm flex mb-4 font-semibold">
+                        Graphics desgin
+                      </li><li class="text-sm flex mb-4 font-semibold">
+                        UI/UX
+                      </li><li class="text-sm flex mb-4 font-semibold">
+                        PHP
+                      </li><li class="text-sm flex mb-4 font-semibold">
+                        Laravel
+                      </li>
 
                     </ul>
                 </div>

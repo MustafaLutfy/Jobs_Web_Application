@@ -74,17 +74,6 @@ class OffersController extends Controller
     
     public function store(Request $request)
     {
-
-        // return $request;
-        // $request->validate([
-        //     // 'company_id' => ['required', 'numeric'],
-        //     // 'job_id' => ['required', 'numeric'],
-        //     // 'requirments' => ['required','string'],
-        //     // 'responsibilities' => ['required','string'],
-        //     // 'salary' => ['required', 'string', 'max:30'], 
-        // //  'work_time' => ['required', 'string', 'max:30'],
-
-        // ]);
         
         $salary = $request->minSalary .'$-'.$request->maxSalary.'$';
 
@@ -164,10 +153,17 @@ class OffersController extends Controller
      */
     public function removeOffer(string $id)
     {
-        if(Auth::guard('company')){
+        if(Auth::guard('company') || Auth::user()->is_admin == 1){
+            Apply::where('offer_id', $id)->delete();
             Offer::where('id', $id)->delete();  
         }
-        return redirect('offers');
+
+        if(Auth::user()->is_admin == 0){
+            return redirect('offers');
+        }
+        elseif(Auth::user()->is_admin == 1){
+            return redirect()->back();
+        }
         
     }
 

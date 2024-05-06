@@ -5,10 +5,19 @@
             <div class="flex h-[80px] ml-[22vw]">
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 gap-10 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <div class="hidden space-x-8 gap-10 sm:-my-px sm:ml-40 sm:flex">
+                   
+                    @guest
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-nav-link> 
+                    @endguest
+                    @auth
+                    <x-nav-link class=" {{ Session::get('locale') == 'ar' ? 'w-[135px]' : ''}} text-center" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-nav-link> 
+                    @endauth
+                    
 
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Offers') }}
@@ -17,14 +26,15 @@
                     <x-nav-link class="w-[110px]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.applies')">
                         {{ __('My Applies') }}
                     </x-nav-link>
-            
-                    <x-nav-link class="w-[100px]" :href="route('get.user.applies')" :active="request()->routeIs('get.user.freelance')">
-                        {{ __('Freelance') }}
-                    </x-nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
+
+          
+
+            @auth
+                
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -38,6 +48,7 @@
                             </div> --}}
                         </button>
                     </x-slot>
+
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.show', Auth::user()->id)">
@@ -67,7 +78,41 @@
                        
                     </x-slot>
                 </x-dropdown>
+                <div class="flex items-center mt-4 gap-2 ml-4 z-30 h-20 "> 
+                    <a class="w-8 h-8" href="{{ route('locale', ['locale' => 'en']) }}">
+                      <img class=" rounded-full {{ Session::get('locale') == 'en' ? 'border-2 border-green-500 ' : ''}}" src="{{asset('images/istockphoto-668235920-612x612.jpg')}}" alt="">
+                    </a>
+                    <a class="w-8 h-8" href="{{ route('locale', ['locale' => 'ar']) }}">
+                      <img class="rounded-full {{ Session::get('locale') == 'ar' ? 'border-2 border-green-500 ' : ''}}" src="{{asset('images/iq-square-01.png')}}" alt="">
+                    </a>
+                    <div id="menu-button" class="all-btn ">
+                      <div class=""> 
+                          <div class="menu-btn-1" onclick="menuBtnFunction(this)">
+                              <span></span>
+                          </div>
+                      </div>
+                  </div>
             </div>
+            @endauth
+
+            @guest
+            <div class="flex gap-8 items-center ml-[15%] justify-self-end mt-4">
+                <div class="flex gap-1">
+                       <a href="{{ route('user.register') }}">
+                               <svg xmlns="http://www.w3.org/2000/svg" class="text-[#7767B5]" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15 4a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4m0 1.9a2.1 2.1 0 1 1 0 4.2A2.1 2.1 0 0 1 12.9 8A2.1 2.1 0 0 1 15 5.9M4 7v3H1v2h3v3h2v-3h3v-2H6V7H4m11 6c-2.67 0-8 1.33-8 4v3h16v-3c0-2.67-5.33-4-8-4m0 1.9c2.97 0 6.1 1.46 6.1 2.1v1.1H8.9V17c0-.64 3.1-2.1 6.1-2.1Z"/></svg>
+                       </a>
+                       <a  class="text-[#7767B5] font-bold" href="{{ route('user.register') }}">Register</a>
+                      
+                </div>
+                <div class="flex gap-1"> 
+                      <a href="{{ route('user.login') }}">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="text-[#7767B5]" width="24" height="24" viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M20 12H7l3-3m0 6l-3-3"/></g></g></svg>
+                      </a>
+                      <a  class="text-[#7767B5] font-bold" href="{{ route('user.login') }}">Login</a>
+                     
+                </div>
+             </div>
+            @endguest
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -92,10 +137,12 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @auth
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @endauth
             </div>
-
+        
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
@@ -111,6 +158,8 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+                
+              
             </div>
         </div>
     </div> 

@@ -49,10 +49,87 @@ class AdminController extends Controller
 
             ]);
 
+        }
     }
-}
+    public function allUsers(){
+        $users = User::get();
+        if(Auth::user()->is_admin == 1){
+            return view('admin.all-users')->with([
+                'users' => $users,
+
+            ]);
+
+        }
+    }
+
+    public function companyRequest(){
+        $companies = Company::where('isActivated', 0)->get();
+        return view('admin.companies-request')->with([
+            'companies' => $companies,
+        ]);
+    }
+    public function allCompanies(){
+        $companies = Company::get();
+        return view('admin.all-companies')->with([
+            'companies' => $companies,
+        ]);
+    }
 
 
+    public function requestActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Activate'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 1,
+                ]);
+            }
+            else{
+                Company::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
+
+
+    public function companyActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Disable'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 0,
+                ]);
+            }
+            elseif($request->action == 'Enable'){
+                Company::where('id', $id)->update([
+                    'isActivated' => 1,
+                ]);
+            }
+            else{
+                Company::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
+
+    public function userActions(Request $request, $id){
+        if(Auth::user()->is_admin == 1){
+            if($request->action == 'Disable'){
+                User::where('id', $id)->update([
+                    'is_active' => 0,
+                ]);
+            }
+            elseif($request->action == 'Enable'){
+                User::where('id', $id)->update([
+                    'is_active' => 1,
+                ]);
+            }
+            else{
+                User::where('id', $id)->delete();
+            }
+            return redirect()->back();
+        }
+    }
+    
+    
 
     public function showProfileForUser($id){
         $company = Company::where('id', $id)->get()->first();
